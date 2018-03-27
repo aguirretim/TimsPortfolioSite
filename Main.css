@@ -1,0 +1,132 @@
+
+/***********************************
+ GENERAL
+************************************/
+
+body {
+	font-fami: 'Open Sans', sans-serif;
+}
+
+#wrapper{
+	max-width:1100px;
+	margin: 0 auto;
+	padding:0 5%
+}
+
+
+
+/***********************************
+ HEADING
+************************************/
+
+
+
+#logo {
+  text-align: center;
+  margin: 0;
+	
+}
+
+h1{
+	font-family: 'Changa One', cursive;
+	margin: 15px 0;
+	font-size: 1.75em;
+	font-weight:normal;
+	list-style: .8em;
+}
+
+h2{
+font-size:0.75em;
+	margin:-5px 0 0;
+	font-width: normal;
+}
+
+
+
+/***********************************
+ NAVIGATION
+************************************/
+
+
+
+nav{
+	text-align: center;
+	padding: 10px 0;
+	margin: 20px 0 0;
+}
+
+
+
+/***********************************
+ FOOTER
+************************************/
+
+
+
+footer {
+	font-size: 0.75em;
+	text-align: center;
+	padding-top: 50px;
+	color: #ccc
+	
+}
+
+
+
+
+
+
+/***********************************
+ COLORS
+************************************/
+
+
+
+/*Site body*/
+body {
+    background-color: white; 
+}
+
+/*light blue header*/
+header {
+  background: #7196B4;
+  border-color: #62829C;
+}
+
+/* Nav Background on mobile*/
+nav {
+  background: #212C34;
+}
+
+/*logo text*/
+h1,h2{
+	color: aliceblue;
+}
+
+/*links*/
+a{
+	text-decoration: none;
+	color: #7196B4;
+}
+
+
+/*nav link*/
+nav a, nav a:visited {
+  color: #fff;
+}
+
+/*selected nav link color*/
+nav a.selected, a:hover{
+	color: #516C81;
+}
+
+
+#social{
+	max-width:1100px;
+	margin: 0 auto;
+	padding:0 5%
+
+}
+
+
+
