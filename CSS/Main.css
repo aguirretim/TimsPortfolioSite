@@ -3,7 +3,7 @@
 ************************************/
 
 body {
-    font-fami: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 #wrapper {
@@ -42,7 +42,7 @@ h1 {
     margin: 15px 0;
     font-size: 1.75em;
     font-weight: normal;
-    list-style: .8em;
+    line-height: 0.8em;
 }
 
 h2 {
@@ -208,7 +208,8 @@ nav a:visited {
 /*selected nav link color*/
 
 nav a.selected,
-a:hover {
+a:hover,
+nav a:hover {
     color: #516C81;
 }
 
