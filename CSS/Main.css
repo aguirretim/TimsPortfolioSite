@@ -52,7 +52,6 @@ h2 {
 }
 
 
-
 /***********************************
  NAVIGATION
 ************************************/
@@ -78,30 +77,101 @@ nav a {
     padding: 15px 10px;
 }
 
+/* Add a subtle scale animation to nav links on hover */
+nav a:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+
+
+
 /***********************************
  Page: PORTFOLIO
 ************************************/
+body, #wrapper {
+    overflow-x: hidden; /* Prevents horizontal overflow */
+    overflow-y: auto; /* Allows vertical scrolling if needed */
+}
 
 #gallery {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
     margin: 0;
-    padding: 0;
-    list-style: none;
+
+
 }
 
 #gallery li {
-    Float: left;
+    box-sizing: border-box;
     width: 45%;
     margin: 2.5%;
     background-color: #f5f5f5;
-    color: #bdc3c7
+    color: #bdc3c7;
+    height: 450px; /* Example fixed height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Adjust as needed */
 }
 
+#gallery li img {
+    width: 100%;
+    height: auto;
+}
+
+.text-container {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 #gallery li a p {
+
     margin: 0;
     padding: 5%;
     font-size: .75em;
-    color: #576f80
+    color: #576f80;
+    word-wrap: break-word; /* Ensures text breaks to avoid overflow */
+    width: 100%;
+    height: 20%;
+    max-width: 80%; /* Restrict max width to the parent container */
+    max-height: 15%; /* Restrict max width to the parent container */
+    overflow: hidden; /* Hide overflowed content */
+    text-overflow: ellipsis; /* Add an ellipsis to indicate text overflow */
 }
+
+
+#gallery li a h5 {
+
+    margin: 0;
+    padding: 5%;
+    font-size: .75em;
+    color: #576f80;
+    word-wrap: break-word; /* Ensures text breaks to avoid overflow */
+    width: 100%;
+    max-width: 80%; /* Restrict max width to the parent container */
+    max-height: 15%; /* Restrict max width to the parent container */
+    overflow: hidden; /* Hide overflowed content */
+    text-overflow: ellipsis; /* Add an ellipsis to indicate text overflow */
+}
+
+#gallery li a{
+    height: 90%;
+}
+
+/* Add a fade-in animation to gallery items */
+#gallery li {
+    opacity: 1;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#gallery li:hover {
+    opacity: 0.8;
+    transform: translateY(0);
+}
+
+
 
 section p {
     float: left
@@ -119,6 +189,7 @@ footer {
     padding-top: 50px;
     color: #ccc
 }
+
 
 /***********************************
  Page: ABOUT
@@ -149,7 +220,6 @@ footer {
     margin: 0 0 10px;
 
 }
-
 
 
 li.linkedin > a > em,

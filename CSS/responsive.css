@@ -71,3 +71,26 @@
         margin-bottom: 60px;
     }
 }
+
+@media screen and (min-width: 900px) {
+    #gallery li {
+        width: calc((100% / 3) - 5%); /* Sets a fixed width for each item */
+        height: 500px; /* Fixed height, adjust as needed */
+        margin: 1.5%;
+    }
+
+    #gallery li img {
+        height: 60%; /* Fixed height for images, adjust as needed */
+    }
+
+    #gallery li a p {
+        height: 15%; /* Fixed height for text, adjust as needed */
+        overflow: auto; /* Adds scrollbar if content overflows */
+    }
+
+    /* Hide scrollbar on all elements */
+    ::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
+}
