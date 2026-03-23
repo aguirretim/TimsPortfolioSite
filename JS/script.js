@@ -354,7 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const PROJECT_MODAL_DATA = {
   omni: {
     icon: 'fa-solid fa-robot',
-    tag: 'AI Project · Next.js + Multi-LLM · Private Repo',
+    tag: 'In Development · Next.js + Multi-LLM · Private Repo',
     title: 'OmniAgent Studio',
     desc: 'A unified dashboard for running multiple AI coding assistants side-by-side — Claude Code, Gemini CLI, and OpenAI Codex — all synced to the same project context. The problem it solves: every AI tool has its own interface, its own context, and no awareness of what the others are doing. OmniAgent Studio fixes that by giving them a shared project brain.',
     features: [
@@ -451,9 +451,17 @@ function closeModal() {
 }
 
 function initProjectModals() {
-  document.getElementById('modalBackdrop').addEventListener('click', closeModal);
-  document.getElementById('modalClose').addEventListener('click', closeModal);
+  // Event delegation — no inline onclick needed, bypasses content blockers
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('[data-open-modal]');
+    if (btn) {
+      e.stopPropagation();
+      openModal(btn.dataset.openModal);
+      return;
+    }
+    if (e.target.closest('#modalBackdrop') || e.target.closest('#modalClose')) {
+      closeModal();
+    }
+  });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 }
-
-window.openModal = openModal;
