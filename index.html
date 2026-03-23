@@ -179,11 +179,11 @@
       <div class="projects__grid">
 
         <!-- Card 0: OmniAgent Studio (FEATURED) -->
-        <div class="project-card project-card--featured animate-in">
+        <div class="project-card project-card--featured animate-in" data-modal="omni" style="cursor:pointer;">
           <div class="project-card__header">
             <div class="project-card__icon"><i class="fa-solid fa-robot"></i></div>
             <div class="project-card__links">
-              <a href="https://github.com/aguirretim" class="project-card__link" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <span class="project-card__private-badge"><i class="fa-solid fa-lock"></i> Private</span>
             </div>
           </div>
           <span class="project-card__featured-tag">AI Project &middot; Next.js + Multi-LLM</span>
@@ -196,13 +196,16 @@
             <span class="badge">Gemini CLI</span>
             <span class="badge">OpenAI Codex</span>
           </div>
+          <button class="btn btn--ghost project-card__detail-btn" onclick="openModal('omni')"><i class="fa-solid fa-circle-info"></i> View Details</button>
         </div>
 
         <!-- Card 1: Option Trading App (FEATURED) -->
-        <div class="project-card project-card--featured animate-in">
+        <div class="project-card project-card--featured animate-in" data-modal="options" style="cursor:pointer;">
           <div class="project-card__header">
             <div class="project-card__icon"><i class="fa-solid fa-chart-line"></i></div>
-            <div class="project-card__links"></div>
+            <div class="project-card__links">
+              <span class="project-card__private-badge"><i class="fa-solid fa-lock"></i> Private</span>
+            </div>
           </div>
           <span class="project-card__featured-tag">In Development &middot; Python + AI Multi-Agent</span>
           <h3 class="project-card__title">Options Trading App</h3>
@@ -215,6 +218,7 @@
             <span class="badge">Black-Scholes</span>
             <span class="badge">Claude AI</span>
           </div>
+          <button class="btn btn--ghost project-card__detail-btn" onclick="openModal('options')"><i class="fa-solid fa-circle-info"></i> View Details</button>
         </div>
 
         <!-- Card 2: ThunderTasteSpring (FEATURED) -->
@@ -517,6 +521,15 @@
       <p class="footer__copy">&copy; 2024 Tim R Aguirre. Built in Seattle.</p>
     </div>
   </footer>
+
+  <!-- Project Detail Modal -->
+  <div class="project-modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="project-modal__backdrop" id="modalBackdrop"></div>
+    <div class="project-modal__panel">
+      <button class="project-modal__close" id="modalClose" aria-label="Close">&times;</button>
+      <div class="project-modal__body" id="modalBody"></div>
+    </div>
+  </div>
 
   <script src="JS/script.js"></script>
 </body>
