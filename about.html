@@ -1,61 +1,347 @@
-<!Doctype html>
-<html lang=en>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Tim Aguirre | Media Creator and Developer </title>
-    <link rel="stylesheet" href="CSS/normalize.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"
-          integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Changa+One|Open+Sans:400,400i,700,700i,800" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/Main.css">
-    <link rel="stylesheet" href="CSS/responsive.css">
-    <meta name="viewport" content="width=device-width, intial-scale=1.0">
-    <script src="JS/script.js"></script>
-
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Tim Aguirre | Android Developer | Seattle</title>
+  <meta name="description" content="Tim Aguirre is an Android & Full Stack Developer in Seattle. Per Scholas certified Java Full Stack developer. Kotlin, Spring Boot, React, and content creator.">
+  <meta name="keywords" content="Tim Aguirre, Android Developer, Kotlin Developer, Java Developer, Spring Boot, Seattle Developer, Full Stack">
+  <meta name="author" content="Tim R Aguirre">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://timaguirre.com/about.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://timaguirre.com/about.html">
+  <meta property="og:title" content="About Tim Aguirre | Android Developer | Seattle">
+  <meta property="og:description" content="Tim Aguirre is an Android & Full Stack Developer in Seattle. Per Scholas certified Java Full Stack developer. Kotlin, Spring Boot, React, and content creator.">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/33067314?v=4">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@Kid1afro2">
+  <meta name="twitter:creator" content="@Kid1afro2">
+  <meta name="twitter:title" content="About Tim Aguirre | Android Developer | Seattle">
+  <meta name="twitter:description" content="Tim Aguirre is an Android & Full Stack Developer in Seattle. Per Scholas certified Java Full Stack developer. Kotlin, Spring Boot, React, and content creator.">
+  <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/33067314?v=4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="CSS/normalize.css">
+  <link rel="stylesheet" href="CSS/Main.css">
+  <link rel="stylesheet" href="CSS/responsive.css">
+  <link rel="stylesheet" href="CSS/enhancements.css">
 </head>
-
 <body>
-<header>
-    <a href="/" id="logo">
-        <h1>Tim R Aguirre</h1>
-        <h2>Mobile, Web and Media Developer</h2>
-    </a>
-    <nav>
-        <ul>
-            <li><a href="/">Portfolio</a></li>
-            <li><a href="about" class="selected">About</a></li>
-            <li><a href="contact">Contact</a></li>
-        </ul>
-    </nav>
-</header>
-<div id="wrapper">
-    <section>
-        <img src="img/Photo%209.jpg" alt="Photogrphy of Tim Aguirre" class="profile-photo">
-        <div class=bio>
-            <h3>About</h3>
-            <p>Hi, I'm Tim Aguirre! Welcome to my portfolio, where I share all of my favorite work I have done.
-                Throughout my career, I have gained knowledge from many different industries. I have learned about audio
-                and video production, testing, and creating software. But above all, I have learned to take an idea and
-                shape it into a product. Living and working in the city of rain here in the Greater Seattle Area. Like
-                any proper adult, I spend my time enjoying TV shows, movies, and video games when I'm not working. When
-                not doing that, I spend my time creating media. Either fun Youtube videos with my drone, Twitch gaming
-                videos, and all kinds of stuff in between.</p>
-            <p>If you'd liked to follow me on Twitter, my username is <a
-                    href="https://twitter.com/kid1afro2">@Kid1afro2</a>.</p>
-        </div>
-    </section>
-    <footer>
-        <a href="https://www.linkedin.com/in/timothyaguirre/"><em class="fab fa-linkedin fa-2x"></em></a>
-        <a href="https://github.com/aguirretim/"><em class="fab fa-github fa-2x"></em></a>
-        <a href="https://twitter.com/kid1afro2"><em class="fa-brands fa-x-twitter fa-2x"></em></a>
-        <a href="https://www.youtube.com/channel/UCtmUcFYXC-h4fDNY_ZIpgaA"><em class="fab fa-youtube fa-2x"></em></a>
-        <a href="mailto:aguirretim@ymail.com"><em class="far fa-envelope fa-2x"></em></a>
-        <p>&copy; 2023 by: Tim R Aguirre</p>
-    </footer>
-</div>
-<script src="https://kit.fontawesome.com/9611125389.js" crossorigin="anonymous"></script>
-</body>
 
+  <!-- Navigation -->
+  <nav class="nav" id="mainNav">
+    <div class="nav__container">
+      <a href="/" class="nav__logo">
+        <span class="nav__logo-text">Tim<span class="nav__logo-accent">.</span></span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="/" class="nav__link">Work</a></li>
+        <li><a href="about.html" class="nav__link nav__link--active">About</a></li>
+        <li><a href="contact.html" class="nav__link">Contact</a></li>
+        <li><a href="https://github.com/aguirretim/" class="nav__link nav__link--icon" target="_blank" rel="noopener" aria-label="GitHub Profile"><i class="fab fa-github"></i></a></li>
+      </ul>
+      <button class="nav__hamburger" id="navHamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- About Hero -->
+  <section class="about-hero">
+    <div class="about-hero__content section__container">
+      <img src="img/Photo%209.jpg"
+           alt="Tim Aguirre, Software Engineer"
+           class="about-hero__photo"
+           loading="eager">
+      <div class="about-hero__text">
+        <span class="about-hero__greeting">Hey there</span>
+        <h1 class="about-hero__name">Tim Aguirre</h1>
+        <p class="about-hero__role">Android Developer &amp; Full Stack Engineer &middot; Open to Opportunities</p>
+        <p class="about-hero__intro">Technology Enthusiast &amp; Creative Explorer &mdash; building software by day, creating content by night.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- My Story -->
+  <section id="story" class="section">
+    <div class="section__container">
+      <h2 class="section__title animate-in">My Story</h2>
+      <div class="story__content animate-in">
+        <p>I'm Tim Aguirre &mdash; a software engineer and full stack developer based in Bothell, Seattle. I hold a <strong>Bachelor of Science in Software Development from WGU Washington</strong> (2020), and my path to software wasn't linear. It started with audio and video production &mdash; I earned an Associate of Applied Arts in Audio Production from the Art Institute of Seattle &mdash; before pivoting into tech through QA engineering, which gave me a deep, hands-on understanding of how software actually behaves under real conditions.</p>
+        <p>Over a decade of QA work across Amazon, Niantic (Pok&eacute;mon GO &amp; Ingress), and Vertafore taught me to think about software from both sides: how it breaks and how it should be built. At Amazon I QA&rsquo;d Alexa&rsquo;s LLM AI features and multimodal Echo devices &mdash; which put me directly in the world of large language models before most people knew what to call them. That foundation pushed me into development. I sharpened my skills through Code Fellows, WGU, and Per Scholas &mdash; where I completed the Java Full Stack Developer program in 2023 and built ThunderTasteSpring, a full-stack recipe platform in Spring Boot with user auth, CRUD, and community features. Today I build with AI as a first-class tool &mdash; working across Claude, ChatGPT, and Gemini, and building OmniAgent Studio: a Next.js dashboard that coordinates multiple AI coding assistants (Claude Code, Gemini CLI, OpenAI Codex) from a single interface, keeping them in sync with shared project context.</p>
+        <p>Today I build across the stack: native Android apps in Java and Kotlin, web platforms in Spring Boot and React, fintech integrations with the Plaid API, and Node.js backends. Outside the code, I fly a drone over the Seattle area, stream on Twitch, and make YouTube videos covering everything from dev demos to CES coverage and VR gaming. I&rsquo;m also learning Japanese &mdash; which has nothing to do with software and everything to do with who I am.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills & Experience -->
+  <section id="experience" class="section">
+    <div class="section__container">
+      <h2 class="section__title animate-in">Skills &amp; Experience</h2>
+      <div class="skills-columns">
+        <div class="skills-column animate-in">
+          <h3 class="experience__heading"><i class="fa-solid fa-code"></i> Technical Skills</h3>
+          <div class="skill-badges">
+            <h4 class="skill-badges__group-title">Mobile</h4>
+            <div class="skill-badges__group">
+              <span class="badge">Android (Java)</span>
+              <span class="badge">Android (Kotlin)</span>
+              <span class="badge">React Native</span>
+            </div>
+            <h4 class="skill-badges__group-title">Backend</h4>
+            <div class="skill-badges__group">
+              <span class="badge">Spring Boot</span>
+              <span class="badge">Spring Security</span>
+              <span class="badge">Node.js</span>
+              <span class="badge">Express</span>
+              <span class="badge">Thymeleaf</span>
+            </div>
+            <h4 class="skill-badges__group-title">Frontend</h4>
+            <div class="skill-badges__group">
+              <span class="badge">React</span>
+              <span class="badge">JavaScript</span>
+              <span class="badge">HTML5</span>
+              <span class="badge">CSS3</span>
+              <span class="badge">Bootstrap</span>
+            </div>
+            <h4 class="skill-badges__group-title">Desktop</h4>
+            <div class="skill-badges__group">
+              <span class="badge">JavaFX</span>
+            </div>
+            <h4 class="skill-badges__group-title">Databases &amp; APIs</h4>
+            <div class="skill-badges__group">
+              <span class="badge">REST APIs</span>
+              <span class="badge">Plaid API</span>
+              <span class="badge">OpenWeatherMap API</span>
+            </div>
+            <h4 class="skill-badges__group-title">AI &amp; Emerging Tech</h4>
+            <div class="skill-badges__group">
+              <span class="badge">Prompt Engineering</span>
+              <span class="badge">LLM Testing &amp; QA</span>
+              <span class="badge">AI-Assisted Development</span>
+              <span class="badge">Multi-LLM Orchestration</span>
+              <span class="badge">Claude / Claude Code</span>
+              <span class="badge">ChatGPT / GPT-4</span>
+              <span class="badge">Gemini CLI</span>
+              <span class="badge">Multimodal AI Devices</span>
+            </div>
+            <h4 class="skill-badges__group-title">Quality Assurance</h4>
+            <div class="skill-badges__group">
+              <span class="badge">Functional Testing</span>
+              <span class="badge">Test Planning</span>
+              <span class="badge">TestRail</span>
+              <span class="badge">Jira</span>
+              <span class="badge">Agile / Scrum</span>
+              <span class="badge">SQL</span>
+            </div>
+            <h4 class="skill-badges__group-title">Tools</h4>
+            <div class="skill-badges__group">
+              <span class="badge">Git</span>
+              <span class="badge">GitHub</span>
+              <span class="badge">Android Studio</span>
+              <span class="badge">Maven</span>
+              <span class="badge">Gradle</span>
+              <span class="badge">Figma</span>
+            </div>
+          </div>
+        </div>
+        <div class="skills-column animate-in">
+          <h3 class="experience__heading"><i class="fa-solid fa-palette"></i> Creative &amp; Soft Skills</h3>
+          <div class="skill-badges">
+            <div class="skill-badges__group">
+              <span class="badge">Drone Videography</span>
+              <span class="badge">Video Editing</span>
+              <span class="badge">Content Creation</span>
+              <span class="badge">Twitch Streaming</span>
+              <span class="badge">UI/UX Thinking</span>
+              <span class="badge">Problem Solving</span>
+              <span class="badge">Technical Communication</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools & Tech -->
+  <section id="tools" class="section">
+    <div class="section__container">
+      <h2 class="section__title animate-in">Tools &amp; Tech</h2>
+      <p class="section__subtitle animate-in">Beyond the code — the full creator stack</p>
+      <div class="tools-grid animate-in">
+        <div class="tool-card">
+          <div class="tool-card__icon"><i class="fa-solid fa-tower-broadcast"></i></div>
+          <h3 class="tool-card__name">Restream</h3>
+          <p class="tool-card__desc">Multiplatform simulcasting across Twitch, YouTube, and 30+ platforms at once.</p>
+        </div>
+        <div class="tool-card">
+          <div class="tool-card__icon"><i class="fa-solid fa-circle-dot"></i></div>
+          <h3 class="tool-card__name">OBS Studio</h3>
+          <p class="tool-card__desc">Full broadcast production — scenes, overlays, audio mixing, and custom layouts.</p>
+        </div>
+        <div class="tool-card">
+          <div class="tool-card__icon"><i class="fab fa-twitch"></i></div>
+          <h3 class="tool-card__name">Twitch</h3>
+          <p class="tool-card__desc">Live streaming gaming, dev sessions, and IRL content to a live audience.</p>
+        </div>
+        <div class="tool-card">
+          <div class="tool-card__icon"><i class="fab fa-youtube"></i></div>
+          <h3 class="tool-card__name">YouTube Studio</h3>
+          <p class="tool-card__desc">Producing, editing, and publishing videos — from dev demos to convention vlogs.</p>
+        </div>
+        <div class="tool-card">
+          <div class="tool-card__icon"><i class="fa-solid fa-film"></i></div>
+          <h3 class="tool-card__name">DaVinci Resolve</h3>
+          <p class="tool-card__desc">Professional video editing for IRL vlogs, event coverage, and project demos.</p>
+        </div>
+        <div class="tool-card">
+          <div class="tool-card__icon"><i class="fa-solid fa-helicopter"></i></div>
+          <h3 class="tool-card__name">DJI Drone</h3>
+          <p class="tool-card__desc">Aerial cinematography over the Seattle / Bothell area. The shots you can't get on the ground.</p>
+        </div>
+        <div class="tool-card">
+          <div class="tool-card__icon"><i class="fab fa-discord"></i></div>
+          <h3 class="tool-card__name">Discord</h3>
+          <p class="tool-card__desc">Community hub — gaming groups, dev communities, and streaming audience engagement.</p>
+        </div>
+        <div class="tool-card">
+          <div class="tool-card__icon"><i class="fab fa-steam"></i></div>
+          <h3 class="tool-card__name">Steam</h3>
+          <p class="tool-card__desc">Primary gaming platform. If there's a good RPG, FPS, or anything competitive — I'm on it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certs" class="section certs-section">
+    <div class="section__container">
+      <h2 class="section__title animate-in">Certifications &amp; Education</h2>
+      <p class="section__subtitle animate-in">Verified credentials from industry leaders</p>
+      <div class="certs-grid">
+        <div class="cert-card animate-in">
+          <div class="cert-card__icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div class="cert-card__body">
+            <span class="cert-card__issuer">WGU Washington</span>
+            <h4 class="cert-card__name">B.S. Software Development</h4>
+            <span class="cert-card__year">2020</span>
+          </div>
+          <span class="cert-card__badge">Degree</span>
+        </div>
+        <div class="cert-card animate-in">
+          <div class="cert-card__icon"><i class="fa-solid fa-code"></i></div>
+          <div class="cert-card__body">
+            <span class="cert-card__issuer">Per Scholas</span>
+            <h4 class="cert-card__name">Java Full Stack Developer</h4>
+            <span class="cert-card__year">2023</span>
+          </div>
+        </div>
+        <div class="cert-card animate-in">
+          <div class="cert-card__icon"><i class="fa-solid fa-music"></i></div>
+          <div class="cert-card__body">
+            <span class="cert-card__issuer">Art Institute of Seattle</span>
+            <h4 class="cert-card__name">A.A.A. Audio Production</h4>
+            <span class="cert-card__year">2011</span>
+          </div>
+        </div>
+        <div class="cert-card animate-in">
+          <div class="cert-card__icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="cert-card__body">
+            <span class="cert-card__issuer">CompTIA</span>
+            <h4 class="cert-card__name">CompTIA A+</h4>
+            <span class="cert-card__year">Industry Standard</span>
+          </div>
+        </div>
+        <div class="cert-card animate-in">
+          <div class="cert-card__icon"><i class="fa-solid fa-diagram-project"></i></div>
+          <div class="cert-card__body">
+            <span class="cert-card__issuer">CompTIA</span>
+            <h4 class="cert-card__name">CompTIA Project+</h4>
+            <span class="cert-card__year">Project Management</span>
+          </div>
+        </div>
+        <div class="cert-card animate-in">
+          <div class="cert-card__icon"><i class="fab fa-java"></i></div>
+          <div class="cert-card__body">
+            <span class="cert-card__issuer">HackerRank</span>
+            <h4 class="cert-card__name">Java (Basic)</h4>
+            <span class="cert-card__year">Verified</span>
+          </div>
+        </div>
+        <div class="cert-card animate-in">
+          <div class="cert-card__icon"><i class="fa-solid fa-globe"></i></div>
+          <div class="cert-card__body">
+            <span class="cert-card__issuer">CIW</span>
+            <h4 class="cert-card__name">Web Development Specialist</h4>
+            <span class="cert-card__year">Multiple Certs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interests -->
+  <section id="interests" class="section">
+    <div class="section__container">
+      <h2 class="section__title animate-in">Outside the Code</h2>
+      <div class="interests__grid">
+        <div class="interest-card animate-in">
+          <div class="interest-card__icon"><i class="fa-solid fa-gamepad"></i></div>
+          <h3 class="interest-card__title">Gaming &amp; Streaming</h3>
+          <p class="interest-card__desc">Twitch streamer and serious gamer. If there's a good RPG or a competitive FPS, I'm on it.</p>
+        </div>
+        <div class="interest-card animate-in">
+          <div class="interest-card__icon"><i class="fa-solid fa-helicopter"></i></div>
+          <h3 class="interest-card__title">Drone Videography</h3>
+          <p class="interest-card__desc">I fly a drone around the Seattle/Bothell area capturing footage that no regular camera can get.</p>
+        </div>
+        <div class="interest-card animate-in">
+          <div class="interest-card__icon"><i class="fa-solid fa-film"></i></div>
+          <h3 class="interest-card__title">Movies &amp; TV</h3>
+          <p class="interest-card__desc">Serious TV show connoisseur. Give me a good series and I'm locked in for the whole season in one sitting.</p>
+        </div>
+        <div class="interest-card animate-in">
+          <div class="interest-card__icon"><i class="fa-solid fa-language"></i></div>
+          <h3 class="interest-card__title">Language &amp; Culture</h3>
+          <p class="interest-card__desc">Currently learning Japanese. Always picking up something new &mdash; in code and in life.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="about-cta section">
+    <div class="section__container about-cta__inner">
+      <h2 class="section__title animate-in">Let's Build Something</h2>
+      <p class="about-cta__text animate-in">I'm always open to new opportunities, collaborations, and interesting conversations.</p>
+      <div class="about-cta__actions animate-in">
+        <a href="contact.html" class="btn btn--primary">Get In Touch</a>
+        <a href="https://www.linkedin.com/in/timothyaguirre/" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <span class="footer__name">Tim R Aguirre</span>
+        <span class="footer__tagline">Android Developer &amp; Full Stack Engineer</span>
+      </div>
+      <div class="footer__social">
+        <a href="https://www.linkedin.com/in/timothyaguirre/" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/aguirretim/" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://x.com/kid1afro2" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://www.youtube.com/channel/UCtmUcFYXC-h4fDNY_ZIpgaA" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="mailto:aguirretim@ymail.com" class="footer__link" aria-label="Email"><i class="far fa-envelope"></i></a>
+      </div>
+      <p class="footer__copy">&copy; 2024 Tim R Aguirre. Built in Seattle.</p>
+    </div>
+  </footer>
+
+  <script src="JS/script.js"></script>
+</body>
 </html>
