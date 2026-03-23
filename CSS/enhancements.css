@@ -144,7 +144,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-size: 0.875rem;
   transition: var(--transition);
 }
@@ -751,13 +751,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.25);
   transition: var(--transition);
 }
 
 .video-card:hover .video-card__overlay {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.45);
 }
 
 /* Play button */
@@ -780,26 +779,35 @@
   transform: scale(1.1);
 }
 
-/* Title + label text in overlay */
-.video-card__title {
-  font-family: var(--font-heading);
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #fff;
+/* Title + label — dark strip pinned to the bottom */
+.video-card__title,
+.video-card__label {
+  position: absolute;
+  left: 0;
+  right: 0;
   margin: 0;
   text-align: center;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.9);
-  padding: 0 0.5rem;
+}
+
+.video-card__title {
+  bottom: 28px;
+  padding: 0.35rem 0.6rem 0.15rem;
+  background: rgba(0, 0, 0, 0.72);
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #fff;
   line-height: 1.3;
 }
 
 .video-card__label {
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.8);
+  bottom: 0;
+  padding: 0.15rem 0.6rem 0.3rem;
+  background: rgba(0, 0, 0, 0.82);
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.9);
   font-weight: 500;
-  letter-spacing: 0.03em;
-  margin: 0;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+  letter-spacing: 0.04em;
 }
 
 /* iframe (used by featured ThunderTaste player) */
