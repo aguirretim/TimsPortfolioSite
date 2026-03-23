@@ -1054,8 +1054,9 @@
 }
 
 .modal__agent-role {
-  font-size: 0.78rem;
-  color: var(--text-muted);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
   margin: 0;
 }
 
