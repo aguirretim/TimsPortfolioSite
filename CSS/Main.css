@@ -536,42 +536,14 @@ h4 {
   box-shadow: var(--shadow-card);
 }
 
-.project-card__shot {
-  display: block;
-  width: calc(100% + 3rem);
-  margin: -1.5rem -1.5rem 1.25rem;
-  height: 180px;
-  object-fit: cover;
-  object-position: center top;
-  background: #0d1117;
-  border-bottom: 1px solid var(--border-color);
-  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.4);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* When the shot is a <picture> (e.g. animated gif with a static fallback),
-   the box styling sits on the picture and the inner img fills it. */
-.project-card__shot img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-}
-
-/* Card clips its rounded corners so banners sit flush; enables hover zoom */
-.project-card {
-  overflow: hidden;
-}
-
-.project-card:hover .project-card__shot,
-.project-card:hover .carousel__slide {
-  transform: scale(1.04);
-}
-
 /* ---------------------------------------------------------------------------
-   Project card image carousel (auto-scrolling slideshow for multi-photo cards)
+   Project card media — single image + auto-scrolling carousel.
+   Both use a "contain over blurred fill" treatment: the whole screenshot is
+   always visible (never cropped) over a blurred, zoomed copy of itself, so the
+   banner is fully filled with no dark/white bars regardless of image aspect.
+   The image URL is passed per element via the --shot custom property.
    --------------------------------------------------------------------------- */
+.project-card__media,
 .project-card__carousel {
   position: relative;
   display: block;
@@ -584,6 +556,45 @@ h4 {
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.4);
 }
 
+/* Blurred fill layer, drawn from the element's --shot image */
+.project-card__media::before,
+.carousel__slide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--shot);
+  background-size: cover;
+  background-position: center;
+  filter: blur(24px) brightness(0.5) saturate(1.15);
+  transform: scale(1.15);
+  z-index: 0;
+}
+
+/* The sharp, whole screenshot on top of the blur */
+.project-card__media img,
+.project-card__media picture,
+.carousel__slide img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Card clips its rounded corners so banners sit flush; enables hover zoom */
+.project-card {
+  overflow: hidden;
+}
+
+.project-card:hover .project-card__media img,
+.project-card:hover .project-card__media picture,
+.project-card:hover .carousel__slide img {
+  transform: scale(1.05);
+}
+
 /* Bottom scrim so the dots stay legible over light screenshots */
 .project-card__carousel::after {
   content: '';
@@ -594,7 +605,7 @@ h4 {
   height: 44px;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
   pointer-events: none;
-  z-index: 1;
+  z-index: 2;
 }
 
 .carousel__track {
@@ -605,12 +616,11 @@ h4 {
 }
 
 .carousel__slide {
+  position: relative;
   flex: 0 0 100%;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
 }
 
 .carousel__dots {
@@ -665,6 +675,64 @@ h4 {
 @media (prefers-reduced-motion: reduce) {
   .carousel__track {
     transition: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Card whole-body click affordance (mouse). Keyboard users use the explicit
+   "View Details" button; anchors/dots inside keep their own behaviour.
+   --------------------------------------------------------------------------- */
+.project-card[data-open-modal] {
+  cursor: pointer;
+}
+
+/* ---------------------------------------------------------------------------
+   Project detail modal — two columns: slideshow beside the details.
+   --------------------------------------------------------------------------- */
+.modal__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 1.75rem;
+  align-items: start;
+}
+
+.modal__media {
+  position: sticky;
+  top: 0;
+}
+
+/* Reuse the carousel mechanism inside the modal, larger and self-contained */
+.modal__carousel {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: #0d1117;
+  border: 1px solid var(--border-color);
+}
+
+.modal__carousel .carousel__dots {
+  bottom: 10px;
+}
+
+.modal__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 760px) {
+  .modal__layout {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .modal__media {
+    position: static;
+  }
+  .modal__carousel {
+    height: 240px;
   }
 }
 

@@ -897,8 +897,8 @@
   border-radius: var(--radius-lg, 1rem);
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(0, 212, 255, 0.1);
   width: 100%;
-  max-width: 780px;
-  max-height: 88vh;
+  max-width: 960px;
+  max-height: 90vh;
   overflow-y: auto;
   animation: modalSlideIn 0.25s ease;
 }

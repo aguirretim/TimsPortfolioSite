@@ -330,92 +330,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  // ---------------------------------------------------------------------------
-  // 7.5 Project Image Carousels (auto-scrolling slideshow)
-  // ---------------------------------------------------------------------------
-
-  const initCarousels = () => {
-    const reduceMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)'
-    ).matches;
-    const DWELL = 5000; // ms each slide is shown (>= WCAG 2.2.2 comfort + readable)
-
-    document.querySelectorAll('[data-carousel]').forEach((carousel) => {
-      const track = carousel.querySelector('.carousel__track');
-      const slides = Array.from(carousel.querySelectorAll('.carousel__slide'));
-      const dotsWrap = carousel.querySelector('.carousel__dots');
-      if (!track || slides.length <= 1 || !dotsWrap) return;
-
-      let index = 0;
-      let timer = null;
-
-      // Build one dot button per slide
-      const dots = slides.map((_, i) => {
-        const dot = document.createElement('button');
-        dot.type = 'button';
-        dot.className = 'carousel__dot' + (i === 0 ? ' carousel__dot--active' : '');
-        dot.setAttribute('aria-label', `Show image ${i + 1} of ${slides.length}`);
-        if (i === 0) dot.setAttribute('aria-current', 'true');
-        dot.addEventListener('click', (e) => {
-          e.stopPropagation(); // never trigger the parent card's modal/link
-          goTo(i, true);
-        });
-        dotsWrap.appendChild(dot);
-        return dot;
-      });
-
-      const render = () => {
-        track.style.transform = `translateX(${-index * 100}%)`;
-        dots.forEach((dot, i) => {
-          const active = i === index;
-          dot.classList.toggle('carousel__dot--active', active);
-          if (active) dot.setAttribute('aria-current', 'true');
-          else dot.removeAttribute('aria-current');
-        });
-      };
-
-      const goTo = (i, manual) => {
-        index = (i + slides.length) % slides.length;
-        render();
-        if (manual) restart();
-      };
-
-      const next = () => goTo(index + 1, false);
-      const start = () => {
-        if (!reduceMotion && timer === null) timer = window.setInterval(next, DWELL);
-      };
-      const stop = () => {
-        if (timer !== null) {
-          window.clearInterval(timer);
-          timer = null;
-        }
-      };
-      const restart = () => {
-        stop();
-        start();
-      };
-
-      // WCAG 2.2.2 — pausable: stop auto-advance on hover and keyboard focus
-      carousel.addEventListener('mouseenter', stop);
-      carousel.addEventListener('mouseleave', start);
-      carousel.addEventListener('focusin', stop);
-      carousel.addEventListener('focusout', start);
-
-      // Keyboard: Left/Right arrows navigate when a control has focus
-      carousel.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-          e.preventDefault();
-          goTo(index - 1, true);
-        } else if (e.key === 'ArrowRight') {
-          e.preventDefault();
-          goTo(index + 1, true);
-        }
-      });
-
-      render();
-      start();
-    });
-  };
+  // Carousels (initCarousels / setupCarousel) are defined at top level so the
+  // modal can reuse the same mechanism for its slideshow — see section 7.5.
 
   // ---------------------------------------------------------------------------
   // Init
@@ -438,6 +354,82 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ---------------------------------------------------------------------------
+// 7.5 Project Image Carousels (auto-scrolling slideshow) — top-level so the
+// project modal can reuse the exact same mechanism. Idempotent per element
+// via data-carouselReady, so re-init on modal open is safe.
+// ---------------------------------------------------------------------------
+
+function setupCarousel(carousel) {
+  const track = carousel.querySelector('.carousel__track');
+  const slides = Array.from(carousel.querySelectorAll('.carousel__slide'));
+  const dotsWrap = carousel.querySelector('.carousel__dots');
+  if (carousel.dataset.carouselReady || !track || slides.length <= 1 || !dotsWrap) return;
+  carousel.dataset.carouselReady = '1';
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const DWELL = 5000; // ms each slide is shown (>= WCAG 2.2.2 comfort + readable)
+  let index = 0;
+  let timer = null;
+
+  const dots = slides.map((_, i) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'carousel__dot' + (i === 0 ? ' carousel__dot--active' : '');
+    dot.setAttribute('aria-label', `Show image ${i + 1} of ${slides.length}`);
+    if (i === 0) dot.setAttribute('aria-current', 'true');
+    dot.addEventListener('click', (e) => {
+      e.stopPropagation(); // never trigger the parent card's modal/link
+      goTo(i, true);
+    });
+    dotsWrap.appendChild(dot);
+    return dot;
+  });
+
+  const render = () => {
+    track.style.transform = `translateX(${-index * 100}%)`;
+    dots.forEach((dot, i) => {
+      const active = i === index;
+      dot.classList.toggle('carousel__dot--active', active);
+      if (active) dot.setAttribute('aria-current', 'true');
+      else dot.removeAttribute('aria-current');
+    });
+  };
+  const goTo = (i, manual) => {
+    index = (i + slides.length) % slides.length;
+    render();
+    if (manual) restart();
+  };
+  const next = () => goTo(index + 1, false);
+  const start = () => {
+    if (!reduceMotion && timer === null) timer = window.setInterval(next, DWELL);
+  };
+  const stop = () => {
+    if (timer !== null) { window.clearInterval(timer); timer = null; }
+  };
+  const restart = () => { stop(); start(); };
+
+  // Expose stop so a closing modal can clear its slideshow's interval
+  carousel._stopAuto = stop;
+
+  // WCAG 2.2.2 — pausable: stop auto-advance on hover and keyboard focus
+  carousel.addEventListener('mouseenter', stop);
+  carousel.addEventListener('mouseleave', start);
+  carousel.addEventListener('focusin', stop);
+  carousel.addEventListener('focusout', start);
+  carousel.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(index - 1, true); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); goTo(index + 1, true); }
+  });
+
+  render();
+  start();
+}
+
+function initCarousels(root) {
+  (root || document).querySelectorAll('[data-carousel]').forEach(setupCarousel);
+}
+
+// ---------------------------------------------------------------------------
 // 8. Project Detail Modals
 // ---------------------------------------------------------------------------
 
@@ -457,6 +449,10 @@ const PROJECT_MODAL_DATA = {
     ],
     stack: ['TypeScript', 'Next.js', 'React', 'Tailwind CSS', 'Claude Code', 'Gemini CLI', 'OpenAI Codex', 'Node.js'],
     agents: null,
+    images: [
+      { src: 'img/projects/OmniAgentStudio.png', alt: 'OmniAgent Studio — multi-LLM coordination dashboard' },
+    ],
+    links: { github: null, demo: null },
   },
   options: {
     icon: 'fa-solid fa-chart-line',
@@ -478,6 +474,154 @@ const PROJECT_MODAL_DATA = {
       { icon: '📊', name: 'Options Desk', role: 'IV surface, put/call ratios, gamma walls, and smart-money positioning.' },
       { icon: '📈', name: 'Technical Analyst', role: 'Chart structure, trendlines, support/resistance, and pattern context.' },
     ],
+    images: [
+      { src: 'img/projects/OptionsTradingApp-1.png', alt: 'Options Trading App — FTFC multi-timeframe scanner dashboard' },
+      { src: 'img/projects/OptionsTradingApp-2.png', alt: 'Options Trading App — trade scan results ranked by confidence' },
+    ],
+    links: { github: null, demo: null },
+  },
+  thundertaste: {
+    icon: 'fab fa-java',
+    tag: 'Per Scholas Capstone · Java Spring Boot · Full-Stack',
+    title: 'ThunderTaste (Spring Boot)',
+    desc: 'A full-stack recipe-discovery web platform and the server-rendered version of my Per Scholas capstone. Users register, log in, and browse a searchable catalog of recipes with computed star ratings, all served by a Spring Boot backend with secured, database-backed accounts.',
+    features: [
+      { name: 'Spring Security Auth', desc: 'Form-based login and registration with BCrypt-hashed passwords and role-aware access — the real enterprise auth pattern, not a mock.' },
+      { name: 'JPA Data Layer', desc: 'JPA/Hibernate entities and repositories model recipes, users, and ratings, with a DatabaseLoader that seeds the catalog on startup.' },
+      { name: 'Thymeleaf Server-Side UI', desc: 'Server-rendered Thymeleaf templates deliver the recipe home grid, search, and detail pages with computed average star ratings.' },
+      { name: 'Recipe Search & Catalog', desc: 'Browse and search recipes; each card shows its image, title, and aggregate rating pulled from the persistence layer.' },
+      { name: 'Layered MVC Architecture', desc: 'Clean controller → service → repository separation across the recipesite package — maintainable, testable structure.' },
+      { name: 'Maven Build', desc: 'Standard Maven project with the Spring Boot plugin and wrapper (mvnw); boots on an embedded server with a single command.' },
+    ],
+    stack: ['Java', 'Spring Boot 3.1', 'Spring Security', 'Spring Data JPA', 'Hibernate', 'Thymeleaf', 'Maven', 'H2 / MySQL'],
+    agents: null,
+    images: [
+      { src: 'img/projects/ThunderTasteSpring.png', alt: 'ThunderTaste — recipe catalog home with star ratings' },
+    ],
+    links: { github: 'https://github.com/aguirretim/ThunderTasteSpring', demo: null },
+  },
+  electrihype: {
+    icon: 'fa-brands fa-android',
+    tag: 'Android · Kotlin + Firebase',
+    title: 'ElectriHype',
+    desc: 'A social-feed Android app written in Kotlin and backed by Firebase. Users sign in, publish text-and-image posts to a shared feed, follow other users, and like posts — all persisted live in the cloud through Cloud Firestore and Firebase Authentication.',
+    features: [
+      { name: 'Firebase Auth', desc: 'Sign-in and account handling backed by Firebase Authentication — a real hosted identity backend, not a local stub.' },
+      { name: 'Cloud Firestore Feed', desc: 'Posts and likes are stored and synced in real time via Cloud Firestore, so the feed reflects live data across devices.' },
+      { name: 'Create Posts with Images', desc: 'Compose screen with text plus an optional photo and a 300-character counter; posts render as author/timestamp/text/image/like cards.' },
+      { name: 'Follow & Interact', desc: 'Follow and unfollow other users and like posts, building a personalized social feed.' },
+      { name: 'Post Detail View', desc: 'Tap through to a post detail screen showing the author, like count, and comments.' },
+      { name: 'Native Kotlin UI', desc: 'Built entirely in Kotlin with Android Studio / Gradle and a clean card-based Material layout.' },
+    ],
+    stack: ['Kotlin', 'Android SDK', 'Firebase Auth', 'Cloud Firestore', 'Gradle', 'Material Design'],
+    agents: null,
+    images: [
+      { src: 'img/projects/ElectriHype-1.png', alt: 'ElectriHype — login screen' },
+      { src: 'img/projects/ElectriHype-2.png', alt: 'ElectriHype — social feed of user posts' },
+      { src: 'img/projects/ElectriHype-3.png', alt: 'ElectriHype — create a new post screen' },
+      { src: 'img/projects/ElectriHype-4.png', alt: 'ElectriHype — post detail view with comments' },
+    ],
+    links: { github: 'https://github.com/aguirretim/ElectriHype', demo: null },
+  },
+  weatha: {
+    icon: 'fa-solid fa-cloud-sun',
+    tag: 'Android · Java + REST API',
+    title: 'Weatha',
+    desc: 'A native Java Android weather app that shows current conditions and a multi-day forecast for the user\'s location. It consumes a live weather REST API and handles location, saved places, and unit preferences — a compact demonstration of Android + API integration.',
+    features: [
+      { name: 'Live Weather API', desc: 'Pulls current conditions and forecasts from the keyless Open-Meteo REST API (migrated from OpenWeatherMap after its endpoint shut down).' },
+      { name: 'Location-Based Lookup', desc: 'Uses the device location to fetch weather for exactly where the user is, with runtime location-permission handling.' },
+      { name: 'Hourly + 5-Day Forecast', desc: 'Displays feels-like and humidity, an hourly strip, and a 5-day daily forecast with highs and lows.' },
+      { name: 'Saved Locations', desc: 'Save multiple locations and see the current temperature for each at a glance.' },
+      { name: 'Unit Toggle', desc: 'One-tap °C / °F switch across the app.' },
+      { name: 'Native Java UI', desc: 'Built in Java with Android Studio / Gradle and a clean, icon-driven conditions layout.' },
+    ],
+    stack: ['Java', 'Android SDK', 'Open-Meteo REST API', 'Location Services', 'Gradle'],
+    agents: null,
+    images: [
+      { src: 'img/projects/weatha-1.png', alt: 'Weatha — current weather conditions for a city' },
+      { src: 'img/projects/weatha-2.png', alt: 'Weatha — multi-day forecast view' },
+      { src: 'img/projects/weatha-3.png', alt: 'Weatha — saved locations list' },
+    ],
+    links: { github: 'https://github.com/aguirretim/weatha', demo: null },
+  },
+  pokeadvisor: {
+    icon: 'fa-brands fa-chrome',
+    tag: 'Chrome Extension (MV3) · JavaScript · Private Repo',
+    title: 'Poke-Advisor',
+    desc: 'A Manifest V3 Chrome extension that overlays real-time competitive advice onto Pokémon Showdown battles. It reads live battle state from the page and computes super-effective move recommendations, opponent switch predictions, and per-matchup ratings — a front-end engineering project with a real rules engine underneath.',
+    features: [
+      { name: 'Real-Time Battle Overlay', desc: 'A content-script panel injects into a live Showdown battle and updates its advice as the battle state changes.' },
+      { name: 'Type-Matchup Engine', desc: 'Recommends the best move by type effectiveness, filtered by the opponent\'s ability immunities — real domain logic, not a lookup.' },
+      { name: 'Switch Prediction', desc: 'Predicts likely opponent switches and rates every bench Pokémon\'s matchup so the user can plan ahead.' },
+      { name: 'Battle History Tracker', desc: 'Auto-saving history of battles with 51 pre-loaded teams for reference and review.' },
+      { name: 'Manifest V3 Architecture', desc: 'Built on MV3 with a background service worker, content scripts, and self-contained setup/popup pages.' },
+      { name: 'Zero-Backend Front-End', desc: 'All logic runs client-side in the browser — pure JavaScript, DOM parsing, and local persistence.' },
+    ],
+    stack: ['JavaScript', 'Chrome Extension (MV3)', 'HTML/CSS', 'DOM APIs', 'Local Storage'],
+    agents: null,
+    images: [
+      { src: 'img/projects/PokeAdvisor-1.png', alt: 'Poke-Advisor — live advice overlay during a Showdown battle' },
+      { src: 'img/projects/PokeAdvisor-2.png', alt: 'Poke-Advisor — setup page with saved team history' },
+    ],
+    links: { github: null, demo: null },
+  },
+  plaid: {
+    icon: 'fa-solid fa-building-columns',
+    tag: 'Backend · Node/Express + Plaid API',
+    title: 'Plaid Sandbox Starter',
+    desc: 'A minimal Node/Express fintech starter that implements the Plaid Link account-connection flow end to end. An Express server issues a link token, serves the client, and completes the public-token → access-token exchange — the core integration pattern for any bank-linking product.',
+    features: [
+      { name: 'Express API Server', desc: 'A Node/Express backend serves the client and exposes the Plaid endpoints.' },
+      { name: 'Plaid Link Flow', desc: 'Implements the full link-token → Plaid Link → public-token → access-token exchange, the standard Plaid onboarding handshake.' },
+      { name: 'Sandbox-Safe by Design', desc: 'Wired to the Plaid sandbox environment with keys kept out of source — no real credentials required to demo the flow.' },
+      { name: 'Bank-Connect UI', desc: 'A clean landing page with a "Connect a bank account" button that launches the Plaid Link modal.' },
+      { name: 'Third-Party API Integration', desc: 'Demonstrates secure server-side handling of a third-party financial API and token lifecycle.' },
+    ],
+    stack: ['Node.js', 'Express', 'Plaid API', 'JavaScript', 'HTML/CSS'],
+    agents: null,
+    images: [
+      { src: 'img/projects/PlaidSandboxStarter.png', alt: 'Plaid Sandbox Starter — connect a bank account screen' },
+    ],
+    links: { github: 'https://github.com/aguirretim/plaid_sandbox_starter', demo: null },
+  },
+  isleoverlay: {
+    icon: 'fa-solid fa-map-location-dot',
+    tag: 'Python · Desktop Overlay + Mapping',
+    title: 'Isle Overlay',
+    desc: 'A frameless, always-on-top Windows overlay for the game The Isle: Evrima. It reads the game\'s "Copy Location" clipboard output and plots the player GPS-style on a self-hosted Leaflet map of roughly 946 points of interest across 22 categories — deliberately built out-of-process to stay anti-cheat-safe.',
+    features: [
+      { name: 'Always-On-Top Overlay', desc: 'A transparent, frameless Windows overlay that floats over the running game.' },
+      { name: 'Clipboard Location Parsing', desc: 'Reads the game\'s "Copy Location" clipboard string and converts it to live map coordinates — no game memory access.' },
+      { name: 'Self-Hosted Leaflet Map', desc: 'Renders a custom Leaflet map of ~946 POIs across 22 categories (sanctuary/migration zones, region labels, food zones).' },
+      { name: 'Anti-Cheat-Safe Design', desc: 'Runs fully out-of-process with no injection — a deliberate architectural choice to stay clear of Easy Anti-Cheat.' },
+      { name: 'Python Desktop App', desc: 'Packaged as a Python desktop application with a committed web asset bundle for the map layer.' },
+    ],
+    stack: ['Python', 'Leaflet.js', 'JavaScript', 'HTML/CSS', 'Windows Desktop'],
+    agents: null,
+    images: [
+      { src: 'img/projects/IsleOverlay.png', alt: 'Isle Overlay — Leaflet POI map with live player location' },
+    ],
+    links: { github: 'https://github.com/aguirretim/isle-overlay', demo: null },
+  },
+  scoreboard: {
+    icon: 'fa-brands fa-react',
+    tag: 'Front-End · React',
+    title: 'Scoreboard',
+    desc: 'A multi-player scoreboard single-page app built in React. Add players, track scores with plus/minus counters, crown the current leader, watch a running total, and time the session with a built-in stopwatch — a clean demonstration of React state, props, and component composition.',
+    features: [
+      { name: 'Component-Driven UI', desc: 'Composed of reusable Player, Counter, Header, and Stopwatch components with data flowing through props.' },
+      { name: 'Live Score State', desc: 'Increment/decrement counters update React state and re-render scores instantly.' },
+      { name: 'Leader Highlighting', desc: 'Derives the current high scorer from state and crowns them automatically.' },
+      { name: 'Running Total & Player Count', desc: 'Header computes the total points and number of players from the live roster.' },
+      { name: 'Built-In Stopwatch', desc: 'A start/stop/reset timer component demonstrating interval state and lifecycle handling.' },
+    ],
+    stack: ['React', 'JavaScript', 'JSX', 'CSS', 'Create React App'],
+    agents: null,
+    images: [
+      { src: 'img/projects/scoreboard.png', alt: 'Scoreboard — multi-player React scoreboard with stopwatch' },
+    ],
+    links: { github: 'https://github.com/aguirretim/scoreboard', demo: null },
   },
 };
 
@@ -505,24 +649,54 @@ function buildModalHTML(data) {
       </div>
     </div>` : '';
 
-  return `
-    <div class="modal__header">
-      <div class="modal__icon"><i class="${data.icon}"></i></div>
-      <div>
-        <div class="modal__tag">${data.tag}</div>
-        <h2 class="modal__title" id="modalTitle">${data.title}</h2>
+  const hasMedia = Array.isArray(data.images) && data.images.length > 0;
+  const slidesHTML = hasMedia
+    ? data.images
+        .map(
+          (im) =>
+            `<div class="carousel__slide" style="--shot:url('${im.src}')"><img src="${im.src}" alt="${im.alt}" loading="lazy" decoding="async"></div>`
+        )
+        .join('')
+    : '';
+  const mediaHTML = hasMedia
+    ? `<div class="modal__media">
+        <div class="modal__carousel" data-carousel role="group" aria-roledescription="carousel" aria-label="${data.title} screenshots">
+          <div class="carousel__track">${slidesHTML}</div>
+          <div class="carousel__dots"></div>
+        </div>
+      </div>`
+    : '';
+
+  const linksHTML = data.links && (data.links.github || data.links.demo)
+    ? `<div class="modal__links">
+        ${data.links.demo ? `<a class="btn btn--primary" href="${data.links.demo}" target="_blank" rel="noopener noreferrer">Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>` : ''}
+        ${data.links.github ? `<a class="btn btn--ghost" href="${data.links.github}" target="_blank" rel="noopener noreferrer">View on GitHub <i class="fab fa-github"></i></a>` : ''}
+      </div>`
+    : '';
+
+  const infoHTML = `
+    <div class="modal__info">
+      <div class="modal__header">
+        <div class="modal__icon"><i class="${data.icon}"></i></div>
+        <div>
+          <div class="modal__tag">${data.tag}</div>
+          <h2 class="modal__title" id="modalTitle">${data.title}</h2>
+        </div>
       </div>
-    </div>
-    <p class="modal__desc">${data.desc}</p>
-    <div class="modal__section">
-      <div class="modal__section-title">Key Features</div>
-      <div class="modal__feature-grid">${featuresHTML}</div>
-    </div>
-    ${agentsHTML}
-    <div class="modal__section">
-      <div class="modal__section-title">Tech Stack</div>
-      <div class="modal__badges">${stackHTML}</div>
+      <p class="modal__desc">${data.desc}</p>
+      <div class="modal__section">
+        <div class="modal__section-title">Key Features</div>
+        <div class="modal__feature-grid">${featuresHTML}</div>
+      </div>
+      ${agentsHTML}
+      <div class="modal__section">
+        <div class="modal__section-title">Tech Stack</div>
+        <div class="modal__badges">${stackHTML}</div>
+      </div>
+      ${linksHTML}
     </div>`;
+
+  return hasMedia ? `<div class="modal__layout">${mediaHTML}${infoHTML}</div>` : infoHTML;
 }
 
 // Element focused before the modal opened, so focus can be restored on close.
@@ -537,6 +711,9 @@ function openModal(key) {
   modal.classList.add('is-open');
   document.body.style.overflow = 'hidden';
 
+  // Start the modal's own image slideshow
+  initCarousels(modal);
+
   // WCAG 2.4.3 / 4.1.2 — move focus into the dialog
   modalLastFocused = document.activeElement;
   const closeBtn = document.getElementById('modalClose');
@@ -546,6 +723,10 @@ function openModal(key) {
 function closeModal() {
   const modal = document.getElementById('projectModal');
   if (!modal || !modal.classList.contains('is-open')) return;
+  // Stop the modal slideshow's auto-advance so its interval doesn't leak
+  modal.querySelectorAll('[data-carousel]').forEach((c) => {
+    if (typeof c._stopAuto === 'function') c._stopAuto();
+  });
   modal.classList.remove('is-open');
   document.body.style.overflow = '';
 
@@ -559,10 +740,12 @@ function closeModal() {
 function initProjectModals() {
   // Event delegation — no inline onclick needed, bypasses content blockers
   document.addEventListener('click', e => {
-    const btn = e.target.closest('[data-open-modal]');
-    if (btn) {
+    // A whole card (or its "View Details" button) opens the modal, but never
+    // hijack clicks on real links or the carousel dots inside the card.
+    const opener = e.target.closest('[data-open-modal]');
+    if (opener && !e.target.closest('a, .carousel__dot')) {
       e.stopPropagation();
-      openModal(btn.dataset.openModal);
+      openModal(opener.dataset.openModal);
       return;
     }
     if (e.target.closest('#modalBackdrop') || e.target.closest('#modalClose')) {
