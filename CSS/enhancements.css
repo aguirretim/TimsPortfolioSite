@@ -950,7 +950,7 @@
   width: 52px;
   height: 52px;
   border-radius: var(--radius-md);
-  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -962,7 +962,7 @@
 .modal__tag {
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  color: var(--accent-cyan);
+  color: var(--accent-primary);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 0.25rem;
@@ -992,7 +992,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--accent-cyan);
+  color: var(--accent-primary);
   margin-bottom: 0.75rem;
   padding-bottom: 0.4rem;
   border-bottom: 1px solid var(--border-color);
@@ -1124,14 +1124,14 @@
   left: 1.25rem;
   font-size: 3.5rem;
   line-height: 1;
-  color: var(--accent-cyan);
+  color: var(--accent-primary);
   opacity: 0.25;
   font-family: Georgia, serif;
   pointer-events: none;
 }
 
 .testimonial-card:hover {
-  border-color: var(--accent-cyan);
+  border-color: var(--accent-primary);
   transform: translateY(-3px);
   box-shadow: 0 8px 24px rgba(0, 212, 255, 0.08);
 }

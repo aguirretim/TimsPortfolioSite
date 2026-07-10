@@ -180,7 +180,7 @@
       <div class="projects__grid">
 
         <!-- Card 0: OmniAgent Studio (FEATURED) -->
-        <div class="project-card project-card--featured animate-in" data-modal="omni" style="cursor:pointer;">
+        <div class="project-card project-card--featured animate-in" data-modal="omni">
           <img class="project-card__shot" src="img/projects/OmniAgentStudio.png" alt="OmniAgent Studio screenshot" loading="lazy" decoding="async">
           <div class="project-card__header">
             <div class="project-card__icon"><i class="fa-solid fa-robot"></i></div>
@@ -202,8 +202,14 @@
         </div>
 
         <!-- Card 1: Option Trading App (FEATURED) -->
-        <div class="project-card project-card--featured animate-in" data-modal="options" style="cursor:pointer;">
-          <img class="project-card__shot" src="img/projects/OptionsTradingApp.png" alt="Options Trading App screenshot" loading="lazy" decoding="async">
+        <div class="project-card project-card--featured animate-in" data-modal="options">
+          <div class="project-card__carousel" data-carousel role="group" aria-roledescription="carousel" aria-label="Options Trading App screenshots">
+            <div class="carousel__track">
+              <img class="carousel__slide" src="img/projects/OptionsTradingApp-1.png" alt="Options Trading App — FTFC multi-timeframe scanner dashboard" loading="lazy" decoding="async">
+              <img class="carousel__slide" src="img/projects/OptionsTradingApp-2.png" alt="Options Trading App — trade scan results ranked by confidence score" loading="lazy" decoding="async">
+            </div>
+            <div class="carousel__dots"></div>
+          </div>
           <div class="project-card__header">
             <div class="project-card__icon"><i class="fa-solid fa-chart-line"></i></div>
             <div class="project-card__links">
@@ -248,7 +254,14 @@
 
         <!-- Card 2: Phasmaphobia Mobile Journal -->
         <div class="project-card animate-in">
-          <img class="project-card__shot" src="img/projects/Phasmaphobia-Mobile-App.png" alt="Phasmaphobia Mobile Journal screenshot" loading="lazy" decoding="async">
+          <div class="project-card__carousel" data-carousel role="group" aria-roledescription="carousel" aria-label="Phasmaphobia Mobile Journal screenshots">
+            <div class="carousel__track">
+              <img class="carousel__slide" src="img/projects/Phasmaphobia-1.png" alt="Phasmaphobia Mobile Journal — evidence tracking screen" loading="lazy" decoding="async">
+              <img class="carousel__slide" src="img/projects/Phasmaphobia-2.png" alt="Phasmaphobia Mobile Journal — ghost identification list" loading="lazy" decoding="async">
+              <img class="carousel__slide" src="img/projects/Phasmaphobia-3.png" alt="Phasmaphobia Mobile Journal — ghost details view" loading="lazy" decoding="async">
+            </div>
+            <div class="carousel__dots"></div>
+          </div>
           <div class="project-card__header">
             <div class="project-card__icon"><i class="fab fa-android"></i></div>
             <div class="project-card__links">
@@ -265,7 +278,15 @@
 
         <!-- Card 3: ElectriHype -->
         <div class="project-card animate-in">
-          <img class="project-card__shot" src="img/projects/ElectriHype.png" alt="ElectriHype screenshot" loading="lazy" decoding="async">
+          <div class="project-card__carousel" data-carousel role="group" aria-roledescription="carousel" aria-label="ElectriHype screenshots">
+            <div class="carousel__track">
+              <img class="carousel__slide" src="img/projects/ElectriHype-1.png" alt="ElectriHype — login screen" loading="lazy" decoding="async">
+              <img class="carousel__slide" src="img/projects/ElectriHype-2.png" alt="ElectriHype — social feed of user posts" loading="lazy" decoding="async">
+              <img class="carousel__slide" src="img/projects/ElectriHype-3.png" alt="ElectriHype — create a new post screen" loading="lazy" decoding="async">
+              <img class="carousel__slide" src="img/projects/ElectriHype-4.png" alt="ElectriHype — post detail view with comments" loading="lazy" decoding="async">
+            </div>
+            <div class="carousel__dots"></div>
+          </div>
           <div class="project-card__header">
             <div class="project-card__icon"><i class="fab fa-android"></i></div>
             <div class="project-card__links">
@@ -305,7 +326,14 @@
 
         <!-- Card 5: Weatha -->
         <div class="project-card animate-in">
-          <img class="project-card__shot" src="img/projects/weatha.png" alt="Weatha screenshot" loading="lazy" decoding="async">
+          <div class="project-card__carousel" data-carousel role="group" aria-roledescription="carousel" aria-label="Weatha screenshots">
+            <div class="carousel__track">
+              <img class="carousel__slide" src="img/projects/weatha-1.png" alt="Weatha — current weather conditions for a city" loading="lazy" decoding="async">
+              <img class="carousel__slide" src="img/projects/weatha-2.png" alt="Weatha — multi-day forecast view" loading="lazy" decoding="async">
+              <img class="carousel__slide" src="img/projects/weatha-3.png" alt="Weatha — saved locations list" loading="lazy" decoding="async">
+            </div>
+            <div class="carousel__dots"></div>
+          </div>
           <div class="project-card__header">
             <div class="project-card__icon"><i class="fab fa-android"></i></div>
             <div class="project-card__links">
@@ -457,7 +485,7 @@
           <div class="cert-card__icon"><i class="fa-solid fa-code"></i></div>
           <div class="cert-card__body">
             <span class="cert-card__issuer">Per Scholas</span>
-            <h4 class="cert-card__name">Java Full Stack Developer</h4>
+            <h3 class="cert-card__name">Java Full Stack Developer</h3>
             <span class="cert-card__year">2023</span>
           </div>
           <span class="cert-card__badge">Featured</span>
@@ -466,7 +494,7 @@
           <div class="cert-card__icon"><i class="fa-solid fa-shield-halved"></i></div>
           <div class="cert-card__body">
             <span class="cert-card__issuer">CompTIA</span>
-            <h4 class="cert-card__name">CompTIA A+</h4>
+            <h3 class="cert-card__name">CompTIA A+</h3>
             <span class="cert-card__year">Industry Standard</span>
           </div>
         </div>
@@ -474,7 +502,7 @@
           <div class="cert-card__icon"><i class="fa-solid fa-diagram-project"></i></div>
           <div class="cert-card__body">
             <span class="cert-card__issuer">CompTIA</span>
-            <h4 class="cert-card__name">CompTIA Project+</h4>
+            <h3 class="cert-card__name">CompTIA Project+</h3>
             <span class="cert-card__year">Project Management</span>
           </div>
         </div>
@@ -482,7 +510,7 @@
           <div class="cert-card__icon"><i class="fab fa-java"></i></div>
           <div class="cert-card__body">
             <span class="cert-card__issuer">HackerRank</span>
-            <h4 class="cert-card__name">Java (Basic)</h4>
+            <h3 class="cert-card__name">Java (Basic)</h3>
             <span class="cert-card__year">Verified</span>
           </div>
         </div>
@@ -490,7 +518,7 @@
           <div class="cert-card__icon"><i class="fa-solid fa-globe"></i></div>
           <div class="cert-card__body">
             <span class="cert-card__issuer">CIW</span>
-            <h4 class="cert-card__name">Web Development Specialist</h4>
+            <h3 class="cert-card__name">Web Development Specialist</h3>
             <span class="cert-card__year">Multiple Certs</span>
           </div>
         </div>

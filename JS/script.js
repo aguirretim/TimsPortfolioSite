@@ -331,6 +331,93 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // ---------------------------------------------------------------------------
+  // 7.5 Project Image Carousels (auto-scrolling slideshow)
+  // ---------------------------------------------------------------------------
+
+  const initCarousels = () => {
+    const reduceMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+    const DWELL = 5000; // ms each slide is shown (>= WCAG 2.2.2 comfort + readable)
+
+    document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+      const track = carousel.querySelector('.carousel__track');
+      const slides = Array.from(carousel.querySelectorAll('.carousel__slide'));
+      const dotsWrap = carousel.querySelector('.carousel__dots');
+      if (!track || slides.length <= 1 || !dotsWrap) return;
+
+      let index = 0;
+      let timer = null;
+
+      // Build one dot button per slide
+      const dots = slides.map((_, i) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'carousel__dot' + (i === 0 ? ' carousel__dot--active' : '');
+        dot.setAttribute('aria-label', `Show image ${i + 1} of ${slides.length}`);
+        if (i === 0) dot.setAttribute('aria-current', 'true');
+        dot.addEventListener('click', (e) => {
+          e.stopPropagation(); // never trigger the parent card's modal/link
+          goTo(i, true);
+        });
+        dotsWrap.appendChild(dot);
+        return dot;
+      });
+
+      const render = () => {
+        track.style.transform = `translateX(${-index * 100}%)`;
+        dots.forEach((dot, i) => {
+          const active = i === index;
+          dot.classList.toggle('carousel__dot--active', active);
+          if (active) dot.setAttribute('aria-current', 'true');
+          else dot.removeAttribute('aria-current');
+        });
+      };
+
+      const goTo = (i, manual) => {
+        index = (i + slides.length) % slides.length;
+        render();
+        if (manual) restart();
+      };
+
+      const next = () => goTo(index + 1, false);
+      const start = () => {
+        if (!reduceMotion && timer === null) timer = window.setInterval(next, DWELL);
+      };
+      const stop = () => {
+        if (timer !== null) {
+          window.clearInterval(timer);
+          timer = null;
+        }
+      };
+      const restart = () => {
+        stop();
+        start();
+      };
+
+      // WCAG 2.2.2 — pausable: stop auto-advance on hover and keyboard focus
+      carousel.addEventListener('mouseenter', stop);
+      carousel.addEventListener('mouseleave', start);
+      carousel.addEventListener('focusin', stop);
+      carousel.addEventListener('focusout', start);
+
+      // Keyboard: Left/Right arrows navigate when a control has focus
+      carousel.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          goTo(index - 1, true);
+        } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          goTo(index + 1, true);
+        }
+      });
+
+      render();
+      start();
+    });
+  };
+
+  // ---------------------------------------------------------------------------
   // Init
   // ---------------------------------------------------------------------------
 
@@ -345,6 +432,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Project detail modals
   initProjectModals();
+
+  // Auto-scrolling image carousels on multi-photo cards
+  initCarousels();
 });
 
 // ---------------------------------------------------------------------------
@@ -435,6 +525,9 @@ function buildModalHTML(data) {
     </div>`;
 }
 
+// Element focused before the modal opened, so focus can be restored on close.
+let modalLastFocused = null;
+
 function openModal(key) {
   const data = PROJECT_MODAL_DATA[key];
   if (!data) return;
@@ -443,11 +536,24 @@ function openModal(key) {
   body.innerHTML = buildModalHTML(data);
   modal.classList.add('is-open');
   document.body.style.overflow = 'hidden';
+
+  // WCAG 2.4.3 / 4.1.2 — move focus into the dialog
+  modalLastFocused = document.activeElement;
+  const closeBtn = document.getElementById('modalClose');
+  if (closeBtn) closeBtn.focus();
 }
 
 function closeModal() {
-  document.getElementById('projectModal').classList.remove('is-open');
+  const modal = document.getElementById('projectModal');
+  if (!modal || !modal.classList.contains('is-open')) return;
+  modal.classList.remove('is-open');
   document.body.style.overflow = '';
+
+  // Restore focus to the control that opened the modal
+  if (modalLastFocused && typeof modalLastFocused.focus === 'function') {
+    modalLastFocused.focus();
+  }
+  modalLastFocused = null;
 }
 
 function initProjectModals() {
@@ -463,5 +569,32 @@ function initProjectModals() {
       closeModal();
     }
   });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  document.addEventListener('keydown', e => {
+    const modal = document.getElementById('projectModal');
+    const isOpen = modal && modal.classList.contains('is-open');
+    if (!isOpen) return;
+
+    if (e.key === 'Escape') {
+      closeModal();
+      return;
+    }
+
+    // WCAG 2.1.2 — trap Tab focus inside the open dialog
+    if (e.key === 'Tab') {
+      const focusables = modal.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusables.length) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  });
 }
