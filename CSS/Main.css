@@ -693,23 +693,35 @@ h4 {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
   gap: 1.75rem;
-  align-items: start;
+  align-items: stretch;
 }
 
+/* Media column fills the full height of the taller details column so the left
+   side is never dead space; the image is centered inside it. */
 .modal__media {
-  position: sticky;
-  top: 0;
+  display: flex;
 }
 
-/* Reuse the carousel mechanism inside the modal, larger and self-contained */
+/* Reuse the carousel mechanism inside the modal. The panel fills its column and
+   uses a subtle brand gradient behind the centered screenshot (instead of the
+   card's blurred fill, which reads as black for dark screenshots). */
 .modal__carousel {
   position: relative;
+  flex: 1;
   width: 100%;
-  height: 320px;
+  min-height: 340px;
   overflow: hidden;
   border-radius: var(--radius-md);
-  background: #0d1117;
+  background: linear-gradient(160deg, #16203a 0%, #10192b 55%, #141d30 100%);
   border: 1px solid var(--border-color);
+}
+
+.modal__carousel .carousel__slide {
+  background: transparent;
+}
+
+.modal__carousel .carousel__slide::before {
+  display: none;
 }
 
 .modal__carousel .carousel__dots {
@@ -728,11 +740,10 @@ h4 {
     grid-template-columns: 1fr;
     gap: 1.25rem;
   }
-  .modal__media {
-    position: static;
-  }
   .modal__carousel {
-    height: 240px;
+    flex: none;
+    min-height: 0;
+    height: 260px;
   }
 }
 
