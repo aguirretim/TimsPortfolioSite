@@ -11,6 +11,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const EXCLUDED_REPOS = ['TimsPortfolioSite', 'aguirretim.github.io'];
 
+  /**
+   * Repos that have a self-hosted screenshot in img/projects/<name>.png.
+   * Keeps the card image-free (icon only) for any repo without a capture.
+   */
+  const SCREENSHOTS = new Set([
+    'CalculateThis',
+    'DidYouKnowAndroidApp',
+    'ElectriHype',
+    'Phasmaphobia-Mobile-App',
+    'Quotivate',
+    'scoreboard',
+    'ThunderTaste',
+    'ThunderTasteSpring',
+    'TimAguirreCustomerScheduler',
+    'TimAguirreSystemofInventory',
+    'TimHiLoApp',
+    'TimsWGUSchedulertracker',
+    'weatha',
+  ]);
+
   /** Map repo names to human-readable display names */
   const FRIENDLY_NAMES = {
     CalculateThis: 'CalculateThis',
@@ -117,9 +137,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const badgeClass = LANG_BADGE_CLASS[lang] || 'badge';
         const badgeLabel = lang || 'Code';
 
+        const shot = SCREENSHOTS.has(repo.name)
+          ? '<img class="project-card__shot" src="img/projects/' + repo.name + '.png" ' +
+            'alt="Screenshot of ' + friendly + '" loading="lazy" decoding="async">'
+          : '';
+
         const card = document.createElement('div');
         card.className = 'project-card animate-in';
         card.innerHTML =
+          shot +
           '<div class="project-card__header">' +
             '<div class="project-card__icon">' +
               languageIcon(lang) +
