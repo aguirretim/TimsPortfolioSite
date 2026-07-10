@@ -232,7 +232,11 @@
 
         <!-- Card 2: ThunderTasteSpring (FEATURED) -->
         <div class="project-card project-card--featured animate-in">
-          <img class="project-card__shot" src="img/projects/ThunderTasteSpring.png" alt="ThunderTasteSpring screenshot" loading="lazy" decoding="async">
+          <picture class="project-card__shot">
+            <!-- Static poster under reduced-motion (WCAG 2.2.2); animated demo otherwise -->
+            <source srcset="img/projects/ThunderTasteSpring.png" media="(prefers-reduced-motion: reduce)">
+            <img src="img/projects/ThunderTasteSpring.gif" alt="ThunderTasteSpring — animated demo of the recipe discovery web app" loading="lazy" decoding="async">
+          </picture>
           <div class="project-card__header">
             <div class="project-card__icon"><i class="fab fa-java"></i></div>
             <div class="project-card__links">

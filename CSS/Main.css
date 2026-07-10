@@ -549,6 +549,16 @@ h4 {
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* When the shot is a <picture> (e.g. animated gif with a static fallback),
+   the box styling sits on the picture and the inner img fills it. */
+.project-card__shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
 /* Card clips its rounded corners so banners sit flush; enables hover zoom */
 .project-card {
   overflow: hidden;
