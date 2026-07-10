@@ -2,6 +2,9 @@
 
 Personal portfolio website for Tim Aguirre — showcasing software development projects and media experience.
 
+![TimsPortfolioSite screenshot](docs/screenshot.png)
+*Homepage hero — animated intro with links to work, about, and contact.*
+
 ## Live Site
 [timaguirre.com](http://timaguirre.com)
 
