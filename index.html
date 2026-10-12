@@ -232,6 +232,35 @@
           <button class="btn btn--ghost project-card__detail-btn" data-open-modal="options"><i class="fa-solid fa-circle-info"></i> View Details</button>
         </div>
 
+        <!-- Chat Reader -->
+        <div class="project-card project-card--featured animate-in" data-open-modal="chatreader">
+          <div class="project-card__carousel" data-carousel role="group" aria-roledescription="carousel" aria-label="Chat Reader screenshots">
+            <div class="carousel__track">
+              <div class="carousel__slide" style="--shot:url('img/projects/ChatReader-1.png')"><img src="img/projects/ChatReader-1.png" alt="Chat Reader — main window reading a Twitch chat aloud" loading="lazy" decoding="async"></div>
+              <div class="carousel__slide" style="--shot:url('img/projects/ChatReader-2.png')"><img src="img/projects/ChatReader-2.png" alt="Chat Reader — settings for voice, speaker, bots and theme" loading="lazy" decoding="async"></div>
+            </div>
+            <div class="carousel__dots"></div>
+          </div>
+          <div class="project-card__header">
+            <div class="project-card__icon"><i class="fa-solid fa-volume-high"></i></div>
+            <div class="project-card__links">
+              <a href="https://github.com/aguirretim/chat-reader" class="project-card__link" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a href="https://github.com/aguirretim/chat-reader/releases/latest" class="project-card__link project-card__link--demo" target="_blank" rel="noopener noreferrer" aria-label="Download"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <span class="project-card__featured-tag">Released &middot; Python Desktop App</span>
+          <h3 class="project-card__title">Chat Reader</h3>
+          <p class="project-card__desc">A free Windows app that reads Twitch chat aloud with a natural voice that runs on your own PC &mdash; no sign-in, no paid service. Skips bots and blocked words, with global hotkeys that work in-game. Ships with 139 automated tests and a one-click installer.</p>
+          <div class="project-card__tech">
+            <span class="badge badge--js">Python</span>
+            <span class="badge">Tkinter</span>
+            <span class="badge">ONNX Runtime</span>
+            <span class="badge">pytest</span>
+            <span class="badge">Inno Setup</span>
+          </div>
+          <button class="btn btn--ghost project-card__detail-btn" data-open-modal="chatreader"><i class="fa-solid fa-circle-info"></i> View Details</button>
+        </div>
+
         <!-- ThunderTaste (Spring Boot) -->
         <div class="project-card project-card--featured animate-in" data-open-modal="thundertaste">
           <div class="project-card__media" style="--shot:url('img/projects/ThunderTasteSpring.png')">
@@ -386,27 +415,6 @@
             <span class="badge">Desktop</span>
           </div>
           <button class="btn btn--ghost project-card__detail-btn" data-open-modal="isleoverlay"><i class="fa-solid fa-circle-info"></i> View Details</button>
-        </div>
-
-        <!-- Scoreboard -->
-        <div class="project-card animate-in" data-open-modal="scoreboard">
-          <div class="project-card__media" style="--shot:url('img/projects/scoreboard.png')">
-            <img src="img/projects/scoreboard.png" alt="Scoreboard — multi-player React scoreboard with stopwatch" loading="lazy" decoding="async">
-          </div>
-          <div class="project-card__header">
-            <div class="project-card__icon"><i class="fa-brands fa-react"></i></div>
-            <div class="project-card__links">
-              <a href="https://github.com/aguirretim/scoreboard" class="project-card__link" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            </div>
-          </div>
-          <span class="project-card__featured-tag">Front-End &middot; React</span>
-          <h3 class="project-card__title">Scoreboard</h3>
-          <p class="project-card__desc">A multi-player scoreboard SPA in React &mdash; add players, track scores, auto-crown the leader, and time the session with a built-in stopwatch. Clean state and props composition.</p>
-          <div class="project-card__tech">
-            <span class="badge badge--js">JavaScript</span>
-            <span class="badge">React</span>
-          </div>
-          <button class="btn btn--ghost project-card__detail-btn" data-open-modal="scoreboard"><i class="fa-solid fa-circle-info"></i> View Details</button>
         </div>
 
       </div>

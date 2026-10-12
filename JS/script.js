@@ -604,24 +604,26 @@ const PROJECT_MODAL_DATA = {
     ],
     links: { github: 'https://github.com/aguirretim/isle-overlay', demo: null },
   },
-  scoreboard: {
-    icon: 'fa-brands fa-react',
-    tag: 'Front-End · React',
-    title: 'Scoreboard',
-    desc: 'A multi-player scoreboard single-page app built in React. Add players, track scores with plus/minus counters, crown the current leader, watch a running total, and time the session with a built-in stopwatch — a clean demonstration of React state, props, and component composition.',
+  chatreader: {
+    icon: 'fa-solid fa-volume-high',
+    tag: 'Released · Python Desktop App · Open Source',
+    title: 'Chat Reader',
+    desc: 'A free Windows app that reads a Twitch channel\'s chat aloud while you stream or play, using a natural-sounding voice that runs entirely on your own PC. There is no sign-in and no paid speech service — type a channel name, press Start reading, and control it with hotkeys that keep working inside a game.',
     features: [
-      { name: 'Component-Driven UI', desc: 'Composed of reusable Player, Counter, Header, and Stopwatch components with data flowing through props.' },
-      { name: 'Live Score State', desc: 'Increment/decrement counters update React state and re-render scores instantly.' },
-      { name: 'Leader Highlighting', desc: 'Derives the current high scorer from state and crowns them automatically.' },
-      { name: 'Running Total & Player Count', desc: 'Header computes the total points and number of players from the live roster.' },
-      { name: 'Built-In Stopwatch', desc: 'A start/stop/reset timer component demonstrating interval state and lifecycle handling.' },
+      { name: 'On-Device Voice', desc: 'Speech is generated locally on the CPU with the Kokoro voice model through ONNX Runtime — works offline once installed, with several voices and a speed control.' },
+      { name: 'No Sign-In Chat Reading', desc: 'Connects to Twitch chat anonymously and read-only. Messages are shown on screen only and are never saved or sent anywhere.' },
+      { name: 'Safety Filtering', desc: 'Skips known bots, link-only messages and blocked words. Word groups and single words can be switched on or off, and the list stays hidden so it never shows on stream.' },
+      { name: 'In-Game Hotkeys', desc: 'Global shortcuts to pause, skip one message, skip all, or silence the voice instantly — without leaving the game.' },
+      { name: 'Tested Like a Product', desc: '139 automated tests that run with no network and no sound, a check that breaks each fix on purpose to prove its test fails, and a scripted install / upgrade / uninstall check.' },
+      { name: 'Packaged Release', desc: 'Built into a per-user Windows installer and a portable zip, published with SHA-256 checksums and release notes that state the measured limits.' },
     ],
-    stack: ['React', 'JavaScript', 'JSX', 'CSS', 'Create React App'],
+    stack: ['Python', 'Tkinter', 'ttkbootstrap', 'ONNX Runtime', 'Kokoro TTS', 'pytest', 'PyInstaller', 'Inno Setup'],
     agents: null,
     images: [
-      { src: 'img/projects/scoreboard.png', alt: 'Scoreboard — multi-player React scoreboard with stopwatch' },
+      { src: 'img/projects/ChatReader-1.png', alt: 'Chat Reader — main window reading a Twitch chat aloud' },
+      { src: 'img/projects/ChatReader-2.png', alt: 'Chat Reader — settings for voice, speaker, bots and theme' },
     ],
-    links: { github: 'https://github.com/aguirretim/scoreboard', demo: null },
+    links: { github: 'https://github.com/aguirretim/chat-reader', demo: 'https://github.com/aguirretim/chat-reader/releases/latest', demoLabel: 'Download' },
   },
 };
 
@@ -669,7 +671,7 @@ function buildModalHTML(data) {
 
   const linksHTML = data.links && (data.links.github || data.links.demo)
     ? `<div class="modal__links">
-        ${data.links.demo ? `<a class="btn btn--primary" href="${data.links.demo}" target="_blank" rel="noopener noreferrer">Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>` : ''}
+        ${data.links.demo ? `<a class="btn btn--primary" href="${data.links.demo}" target="_blank" rel="noopener noreferrer">${data.links.demoLabel || 'Live Demo'} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>` : ''}
         ${data.links.github ? `<a class="btn btn--ghost" href="${data.links.github}" target="_blank" rel="noopener noreferrer">View on GitHub <i class="fab fa-github"></i></a>` : ''}
       </div>`
     : '';
