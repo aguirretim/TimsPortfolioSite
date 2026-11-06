@@ -284,7 +284,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  color: #ff4444;
+  color: #ff6b6b; /* was #ff4444 (4.24:1 on the card gradient); now 4.78:1+ */
   font-size: 0.85rem;
   font-weight: 500;
   margin-top: 0.75rem;
@@ -296,7 +296,7 @@
 }
 
 .project-card__watch-link:hover {
-  color: #ff0000;
+  color: #ff8f8f; /* was #ff0000 (under 4.5:1) */
   text-decoration: underline;
 }
 
@@ -1174,4 +1174,76 @@
 
 @media (max-width: 600px) {
   .testimonials-grid { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
+   Accessibility fixes (2026-11 audit, WCAG 2.2 AA)
+   ========================================================================== */
+
+/* 2.4.1 Bypass Blocks — skip link, visible only when focused */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 2000;
+  padding: 0.6rem 1rem;
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+}
+
+/* 2.4.7 Focus Visible / 1.4.11 Non-text Contrast — one clear ring for every
+   control. The old default rings used currentColor, which on the cyan
+   primary buttons was dark-on-dark and almost invisible. */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible,
+:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 3px;
+}
+
+/* Skip-link / in-page-link targets get focus programmatically; they are
+   sections, not controls, so no ring */
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
+/* 2.2.2 Pause, Stop, Hide — slideshow pause/play button beside the dots */
+.carousel__toggle {
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  margin-left: 4px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(10, 14, 26, 0.75);
+  color: #fff;
+  font-size: 0.65rem;
+  line-height: 26px;
+  cursor: pointer;
+}
+
+.carousel__toggle:hover {
+  background: rgba(10, 14, 26, 0.95);
+}
+
+/* 1.4.4 Resize Text — cert names were cut off with "…" (nowrap + hidden),
+   even at normal size ("Java Full Stack Dev…"). Let them wrap instead. */
+.cert-card__name {
+  white-space: normal;
+  overflow: visible;
+}
+
+/* 1.4.4 / 1.4.10 — with text at 200% the fixed 3-column contact grid pushed
+   the last card off-screen. Size columns by text (rem) so they drop to fewer
+   columns as text grows; at normal size the layout is unchanged. */
+.contact-methods__grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
 }

@@ -50,6 +50,7 @@
   </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
 
   <!-- Navigation -->
   <nav class="nav" id="mainNav">
@@ -57,17 +58,19 @@
       <a href="/" class="nav__logo">
         <span class="nav__logo-text">Tim<span class="nav__logo-accent">.</span></span>
       </a>
-      <ul class="nav__links">
+      <ul class="nav__links" id="navLinks">
         <li><a href="/" class="nav__link nav__link--active">Work</a></li>
         <li><a href="about.html" class="nav__link">About</a></li>
         <li><a href="contact.html" class="nav__link">Contact</a></li>
-        <li><a href="https://github.com/aguirretim/" class="nav__link nav__link--icon" target="_blank" rel="noopener" aria-label="GitHub Profile"><i class="fab fa-github"></i></a></li>
+        <li><a href="https://github.com/aguirretim/" class="nav__link nav__link--icon" target="_blank" rel="noopener" aria-label="GitHub Profile"><i aria-hidden="true" class="fab fa-github"></i></a></li>
       </ul>
-      <button class="nav__hamburger" id="navHamburger" aria-label="Toggle menu">
+      <button type="button" class="nav__hamburger" id="navHamburger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
+
+  <main id="main" tabindex="-1">
 
   <!-- Hero -->
   <section id="hero" class="hero">
@@ -92,7 +95,7 @@
       <h1 class="hero__title">Tim <span class="hero__title-accent">Aguirre</span></h1>
       <p class="hero__subtitle">Android Developer &amp; Full Stack Engineer</p>
       <div class="hero__location">
-        <i class="fa-solid fa-location-dot"></i>
+        <i aria-hidden="true" class="fa-solid fa-location-dot"></i>
         <span>Seattle, WA &middot; Open to Work</span>
       </div>
       <p class="hero__tagline">I build Android apps, full-stack platforms, and create media that connects. Currently open to new opportunities.</p>
@@ -109,12 +112,12 @@
       <h2 class="section__title animate-in">What I Work With</h2>
       <div class="skills__grid">
         <div class="skill-card animate-in">
-          <div class="skill-card__icon"><i class="fa-brands fa-android"></i></div>
+          <div class="skill-card__icon"><i aria-hidden="true" class="fa-brands fa-android"></i></div>
           <h3 class="skill-card__name">Android</h3>
           <p class="skill-card__desc">Kotlin &amp; Java</p>
         </div>
         <div class="skill-card animate-in">
-          <div class="skill-card__icon"><i class="fa-solid fa-leaf"></i></div>
+          <div class="skill-card__icon"><i aria-hidden="true" class="fa-solid fa-leaf"></i></div>
           <h3 class="skill-card__name">Spring Boot</h3>
           <p class="skill-card__desc">Java Backend</p>
         </div>
@@ -124,47 +127,47 @@
           <p class="skill-card__desc">Modern Android</p>
         </div>
         <div class="skill-card animate-in">
-          <div class="skill-card__icon"><i class="fa-brands fa-react"></i></div>
+          <div class="skill-card__icon"><i aria-hidden="true" class="fa-brands fa-react"></i></div>
           <h3 class="skill-card__name">React</h3>
           <p class="skill-card__desc">Web &amp; Native</p>
         </div>
         <div class="skill-card animate-in">
-          <div class="skill-card__icon"><i class="fa-brands fa-java"></i></div>
+          <div class="skill-card__icon"><i aria-hidden="true" class="fa-brands fa-java"></i></div>
           <h3 class="skill-card__name">Java</h3>
           <p class="skill-card__desc">Android &amp; Full Stack</p>
         </div>
         <div class="skill-card animate-in">
-          <div class="skill-card__icon"><i class="fa-brands fa-js"></i></div>
+          <div class="skill-card__icon"><i aria-hidden="true" class="fa-brands fa-js"></i></div>
           <h3 class="skill-card__name">JavaScript</h3>
           <p class="skill-card__desc">Web &amp; Node.js</p>
         </div>
         <div class="skill-card animate-in">
-          <div class="skill-card__icon"><i class="fa-brands fa-node-js"></i></div>
+          <div class="skill-card__icon"><i aria-hidden="true" class="fa-brands fa-node-js"></i></div>
           <h3 class="skill-card__name">Node.js</h3>
           <p class="skill-card__desc">Backend APIs</p>
         </div>
         <div class="skill-card animate-in">
-          <div class="skill-card__icon"><i class="fa-brands fa-html5"></i></div>
+          <div class="skill-card__icon"><i aria-hidden="true" class="fa-brands fa-html5"></i></div>
           <h3 class="skill-card__name">HTML/CSS</h3>
           <p class="skill-card__desc">Web Fundamentals</p>
         </div>
         <div class="skill-card animate-in">
-          <div class="skill-card__icon"><i class="fa-brands fa-github"></i></div>
+          <div class="skill-card__icon"><i aria-hidden="true" class="fa-brands fa-github"></i></div>
           <h3 class="skill-card__name">Git/GitHub</h3>
           <p class="skill-card__desc">Version Control</p>
         </div>
         <div class="skill-card animate-in">
-          <div class="skill-card__icon"><i class="fa-solid fa-pen-ruler"></i></div>
+          <div class="skill-card__icon"><i aria-hidden="true" class="fa-solid fa-pen-ruler"></i></div>
           <h3 class="skill-card__name">Figma</h3>
           <p class="skill-card__desc">UI/UX Design</p>
         </div>
         <div class="skill-card animate-in">
-          <div class="skill-card__icon"><i class="fa-solid fa-plug"></i></div>
+          <div class="skill-card__icon"><i aria-hidden="true" class="fa-solid fa-plug"></i></div>
           <h3 class="skill-card__name">APIs</h3>
           <p class="skill-card__desc">REST &amp; Plaid</p>
         </div>
         <div class="skill-card animate-in">
-          <div class="skill-card__icon"><i class="fa-solid fa-video"></i></div>
+          <div class="skill-card__icon"><i aria-hidden="true" class="fa-solid fa-video"></i></div>
           <h3 class="skill-card__name">Media/Video</h3>
           <p class="skill-card__desc">Video &amp; Content</p>
         </div>
@@ -185,9 +188,9 @@
             <img src="img/projects/OmniAgentStudio.png" alt="OmniAgent Studio — multi-LLM coordination dashboard" loading="lazy" decoding="async">
           </div>
           <div class="project-card__header">
-            <div class="project-card__icon"><i class="fa-solid fa-robot"></i></div>
+            <div class="project-card__icon"><i aria-hidden="true" class="fa-solid fa-robot"></i></div>
             <div class="project-card__links">
-              <span class="project-card__private-badge"><i class="fa-solid fa-lock"></i> Private</span>
+              <span class="project-card__private-badge"><i aria-hidden="true" class="fa-solid fa-lock"></i> Private</span>
             </div>
           </div>
           <span class="project-card__featured-tag">In Development &middot; Next.js + Multi-LLM</span>
@@ -200,7 +203,7 @@
             <span class="badge">Gemini CLI</span>
             <span class="badge">OpenAI Codex</span>
           </div>
-          <button class="btn btn--ghost project-card__detail-btn" data-open-modal="omni"><i class="fa-solid fa-circle-info"></i> View Details</button>
+          <button class="btn btn--ghost project-card__detail-btn" data-open-modal="omni"><i aria-hidden="true" class="fa-solid fa-circle-info"></i> View Details</button>
         </div>
 
         <!-- Options Trading App -->
@@ -213,9 +216,9 @@
             <div class="carousel__dots"></div>
           </div>
           <div class="project-card__header">
-            <div class="project-card__icon"><i class="fa-solid fa-chart-line"></i></div>
+            <div class="project-card__icon"><i aria-hidden="true" class="fa-solid fa-chart-line"></i></div>
             <div class="project-card__links">
-              <span class="project-card__private-badge"><i class="fa-solid fa-lock"></i> Private</span>
+              <span class="project-card__private-badge"><i aria-hidden="true" class="fa-solid fa-lock"></i> Private</span>
             </div>
           </div>
           <span class="project-card__featured-tag">In Development &middot; Python + AI Multi-Agent</span>
@@ -229,7 +232,7 @@
             <span class="badge">Black-Scholes</span>
             <span class="badge">Claude AI</span>
           </div>
-          <button class="btn btn--ghost project-card__detail-btn" data-open-modal="options"><i class="fa-solid fa-circle-info"></i> View Details</button>
+          <button class="btn btn--ghost project-card__detail-btn" data-open-modal="options"><i aria-hidden="true" class="fa-solid fa-circle-info"></i> View Details</button>
         </div>
 
         <!-- Chat Reader -->
@@ -242,10 +245,10 @@
             <div class="carousel__dots"></div>
           </div>
           <div class="project-card__header">
-            <div class="project-card__icon"><i class="fa-solid fa-volume-high"></i></div>
+            <div class="project-card__icon"><i aria-hidden="true" class="fa-solid fa-volume-high"></i></div>
             <div class="project-card__links">
-              <a href="https://github.com/aguirretim/chat-reader" class="project-card__link" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-              <a href="https://github.com/aguirretim/chat-reader/releases/latest" class="project-card__link project-card__link--demo" target="_blank" rel="noopener noreferrer" aria-label="Download"><i class="fa-solid fa-download"></i></a>
+              <a href="https://github.com/aguirretim/chat-reader" class="project-card__link" target="_blank" rel="noopener noreferrer" aria-label="Chat Reader on GitHub"><i aria-hidden="true" class="fab fa-github"></i></a>
+              <a href="https://github.com/aguirretim/chat-reader/releases/latest" class="project-card__link project-card__link--demo" target="_blank" rel="noopener noreferrer" aria-label="Download Chat Reader"><i aria-hidden="true" class="fa-solid fa-download"></i></a>
             </div>
           </div>
           <span class="project-card__featured-tag">Released &middot; Python Desktop App</span>
@@ -258,7 +261,7 @@
             <span class="badge">pytest</span>
             <span class="badge">Inno Setup</span>
           </div>
-          <button class="btn btn--ghost project-card__detail-btn" data-open-modal="chatreader"><i class="fa-solid fa-circle-info"></i> View Details</button>
+          <button class="btn btn--ghost project-card__detail-btn" data-open-modal="chatreader"><i aria-hidden="true" class="fa-solid fa-circle-info"></i> View Details</button>
         </div>
 
         <!-- ThunderTaste (Spring Boot) -->
@@ -270,10 +273,10 @@
             </picture>
           </div>
           <div class="project-card__header">
-            <div class="project-card__icon"><i class="fab fa-java"></i></div>
+            <div class="project-card__icon"><i aria-hidden="true" class="fab fa-java"></i></div>
             <div class="project-card__links">
-              <a href="https://github.com/aguirretim/ThunderTasteSpring" class="project-card__link" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-              <a href="https://www.youtube.com/watch?v=tW1luspVpRE" class="project-card__link project-card__link--demo" target="_blank" rel="noopener noreferrer" aria-label="Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              <a href="https://github.com/aguirretim/ThunderTasteSpring" class="project-card__link" target="_blank" rel="noopener noreferrer" aria-label="ThunderTaste on GitHub"><i aria-hidden="true" class="fab fa-github"></i></a>
+              <a href="https://www.youtube.com/watch?v=tW1luspVpRE" class="project-card__link project-card__link--demo" target="_blank" rel="noopener noreferrer" aria-label="ThunderTaste demo video on YouTube"><i aria-hidden="true" class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
           </div>
           <span class="project-card__featured-tag">Per Scholas Capstone &middot; Spring Boot</span>
@@ -285,8 +288,8 @@
             <span class="badge">Spring Security</span>
             <span class="badge">Thymeleaf</span>
           </div>
-          <a href="https://www.youtube.com/watch?v=tW1luspVpRE" class="project-card__watch-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i> Watch the Demo</a>
-          <button class="btn btn--ghost project-card__detail-btn" data-open-modal="thundertaste"><i class="fa-solid fa-circle-info"></i> View Details</button>
+          <a href="https://www.youtube.com/watch?v=tW1luspVpRE" class="project-card__watch-link" target="_blank" rel="noopener noreferrer"><i aria-hidden="true" class="fab fa-youtube"></i> Watch the Demo</a>
+          <button class="btn btn--ghost project-card__detail-btn" data-open-modal="thundertaste"><i aria-hidden="true" class="fa-solid fa-circle-info"></i> View Details</button>
         </div>
 
         <!-- ElectriHype -->
@@ -301,10 +304,10 @@
             <div class="carousel__dots"></div>
           </div>
           <div class="project-card__header">
-            <div class="project-card__icon"><i class="fa-brands fa-android"></i></div>
+            <div class="project-card__icon"><i aria-hidden="true" class="fa-brands fa-android"></i></div>
             <div class="project-card__links">
-              <a href="https://github.com/aguirretim/ElectriHype" class="project-card__link" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-              <a href="https://www.figma.com/proto/R4yG9qLieiyIJJu9uHfAng/ElectriHype-Social-media-app" class="project-card__link project-card__link--demo" target="_blank" rel="noopener noreferrer" aria-label="Figma Prototype"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              <a href="https://github.com/aguirretim/ElectriHype" class="project-card__link" target="_blank" rel="noopener noreferrer" aria-label="ElectriHype on GitHub"><i aria-hidden="true" class="fab fa-github"></i></a>
+              <a href="https://www.figma.com/proto/R4yG9qLieiyIJJu9uHfAng/ElectriHype-Social-media-app" class="project-card__link project-card__link--demo" target="_blank" rel="noopener noreferrer" aria-label="ElectriHype Figma prototype"><i aria-hidden="true" class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
           </div>
           <span class="project-card__featured-tag">Android &middot; Kotlin + Firebase</span>
@@ -315,8 +318,8 @@
             <span class="badge">Android</span>
             <span class="badge">Firebase</span>
           </div>
-          <a href="https://www.figma.com/proto/R4yG9qLieiyIJJu9uHfAng/ElectriHype-Social-media-app" class="project-card__watch-link" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-pen-ruler"></i> View Prototype</a>
-          <button class="btn btn--ghost project-card__detail-btn" data-open-modal="electrihype"><i class="fa-solid fa-circle-info"></i> View Details</button>
+          <a href="https://www.figma.com/proto/R4yG9qLieiyIJJu9uHfAng/ElectriHype-Social-media-app" class="project-card__watch-link" target="_blank" rel="noopener noreferrer"><i aria-hidden="true" class="fa-solid fa-pen-ruler"></i> View Prototype</a>
+          <button class="btn btn--ghost project-card__detail-btn" data-open-modal="electrihype"><i aria-hidden="true" class="fa-solid fa-circle-info"></i> View Details</button>
         </div>
 
         <!-- Weatha -->
@@ -330,9 +333,9 @@
             <div class="carousel__dots"></div>
           </div>
           <div class="project-card__header">
-            <div class="project-card__icon"><i class="fa-solid fa-cloud-sun"></i></div>
+            <div class="project-card__icon"><i aria-hidden="true" class="fa-solid fa-cloud-sun"></i></div>
             <div class="project-card__links">
-              <a href="https://github.com/aguirretim/weatha" class="project-card__link" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a href="https://github.com/aguirretim/weatha" class="project-card__link" target="_blank" rel="noopener noreferrer" aria-label="Weatha on GitHub"><i aria-hidden="true" class="fab fa-github"></i></a>
             </div>
           </div>
           <span class="project-card__featured-tag">Android &middot; Java + REST API</span>
@@ -343,7 +346,7 @@
             <span class="badge">Android</span>
             <span class="badge">REST API</span>
           </div>
-          <button class="btn btn--ghost project-card__detail-btn" data-open-modal="weatha"><i class="fa-solid fa-circle-info"></i> View Details</button>
+          <button class="btn btn--ghost project-card__detail-btn" data-open-modal="weatha"><i aria-hidden="true" class="fa-solid fa-circle-info"></i> View Details</button>
         </div>
 
         <!-- Poke-Advisor -->
@@ -356,9 +359,9 @@
             <div class="carousel__dots"></div>
           </div>
           <div class="project-card__header">
-            <div class="project-card__icon"><i class="fa-brands fa-chrome"></i></div>
+            <div class="project-card__icon"><i aria-hidden="true" class="fa-brands fa-chrome"></i></div>
             <div class="project-card__links">
-              <span class="project-card__private-badge"><i class="fa-solid fa-lock"></i> Private</span>
+              <span class="project-card__private-badge"><i aria-hidden="true" class="fa-solid fa-lock"></i> Private</span>
             </div>
           </div>
           <span class="project-card__featured-tag">Chrome Extension &middot; Manifest V3</span>
@@ -369,7 +372,7 @@
             <span class="badge">Chrome MV3</span>
             <span class="badge">DOM APIs</span>
           </div>
-          <button class="btn btn--ghost project-card__detail-btn" data-open-modal="pokeadvisor"><i class="fa-solid fa-circle-info"></i> View Details</button>
+          <button class="btn btn--ghost project-card__detail-btn" data-open-modal="pokeadvisor"><i aria-hidden="true" class="fa-solid fa-circle-info"></i> View Details</button>
         </div>
 
         <!-- Plaid Sandbox Starter -->
@@ -378,9 +381,9 @@
             <img src="img/projects/PlaidSandboxStarter.png" alt="Plaid Sandbox Starter — connect a bank account screen" loading="lazy" decoding="async">
           </div>
           <div class="project-card__header">
-            <div class="project-card__icon"><i class="fa-solid fa-building-columns"></i></div>
+            <div class="project-card__icon"><i aria-hidden="true" class="fa-solid fa-building-columns"></i></div>
             <div class="project-card__links">
-              <a href="https://github.com/aguirretim/plaid_sandbox_starter" class="project-card__link" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a href="https://github.com/aguirretim/plaid_sandbox_starter" class="project-card__link" target="_blank" rel="noopener noreferrer" aria-label="Plaid Sandbox Starter on GitHub"><i aria-hidden="true" class="fab fa-github"></i></a>
             </div>
           </div>
           <span class="project-card__featured-tag">Backend &middot; Node + Plaid API</span>
@@ -392,7 +395,7 @@
             <span class="badge">Plaid API</span>
             <span class="badge">Fintech</span>
           </div>
-          <button class="btn btn--ghost project-card__detail-btn" data-open-modal="plaid"><i class="fa-solid fa-circle-info"></i> View Details</button>
+          <button class="btn btn--ghost project-card__detail-btn" data-open-modal="plaid"><i aria-hidden="true" class="fa-solid fa-circle-info"></i> View Details</button>
         </div>
 
         <!-- Isle Overlay -->
@@ -401,9 +404,9 @@
             <img src="img/projects/IsleOverlay.png" alt="Isle Overlay — Leaflet POI map with live player location" loading="lazy" decoding="async">
           </div>
           <div class="project-card__header">
-            <div class="project-card__icon"><i class="fa-solid fa-map-location-dot"></i></div>
+            <div class="project-card__icon"><i aria-hidden="true" class="fa-solid fa-map-location-dot"></i></div>
             <div class="project-card__links">
-              <a href="https://github.com/aguirretim/isle-overlay" class="project-card__link" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a href="https://github.com/aguirretim/isle-overlay" class="project-card__link" target="_blank" rel="noopener noreferrer" aria-label="Isle Overlay on GitHub"><i aria-hidden="true" class="fab fa-github"></i></a>
             </div>
           </div>
           <span class="project-card__featured-tag">Python &middot; Desktop Overlay</span>
@@ -414,12 +417,12 @@
             <span class="badge">Leaflet.js</span>
             <span class="badge">Desktop</span>
           </div>
-          <button class="btn btn--ghost project-card__detail-btn" data-open-modal="isleoverlay"><i class="fa-solid fa-circle-info"></i> View Details</button>
+          <button class="btn btn--ghost project-card__detail-btn" data-open-modal="isleoverlay"><i aria-hidden="true" class="fa-solid fa-circle-info"></i> View Details</button>
         </div>
 
       </div>
       <div class="projects__more animate-in">
-        <a href="https://github.com/aguirretim/" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">View All on GitHub <i class="fa-brands fa-github"></i></a>
+        <a href="https://github.com/aguirretim/" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">View All on GitHub <i aria-hidden="true" class="fa-brands fa-github"></i></a>
       </div>
     </div>
   </section>
@@ -438,7 +441,7 @@
                role="button" tabindex="0" aria-label="Play ThunderTasteSpring demo video"
                data-videoid="tW1luspVpRE">
             <div class="youtube-feature__play-btn" aria-hidden="true">
-              <i class="fab fa-youtube"></i>
+              <i aria-hidden="true" class="fab fa-youtube"></i>
             </div>
             <div class="youtube-feature__overlay">
               <span class="youtube-feature__title">ThunderTasteSpring &mdash; Spring Boot Demo</span>
@@ -449,21 +452,21 @@
           <h3>ThunderTasteSpring Full-Stack Demo</h3>
           <p>Watch the full walkthrough of my Per Scholas Java Full Stack capstone &mdash; a recipe discovery platform built with Spring Boot, Spring Security, and Thymeleaf. User auth, recipe CRUD, community features, and a live web interface.</p>
           <ul class="youtube-feature__highlights">
-            <li><i class="fa-solid fa-check"></i> Spring Boot &amp; Spring Security</li>
-            <li><i class="fa-solid fa-check"></i> Full CRUD operations</li>
-            <li><i class="fa-solid fa-check"></i> User authentication &amp; authorization</li>
-            <li><i class="fa-solid fa-check"></i> Community recipe sharing</li>
+            <li><i aria-hidden="true" class="fa-solid fa-check"></i> Spring Boot &amp; Spring Security</li>
+            <li><i aria-hidden="true" class="fa-solid fa-check"></i> Full CRUD operations</li>
+            <li><i aria-hidden="true" class="fa-solid fa-check"></i> User authentication &amp; authorization</li>
+            <li><i aria-hidden="true" class="fa-solid fa-check"></i> Community recipe sharing</li>
           </ul>
           <div class="youtube-feature__actions">
             <a href="https://www.youtube.com/watch?v=tW1luspVpRE" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
-              <i class="fab fa-youtube"></i> Watch on YouTube
+              <i aria-hidden="true" class="fab fa-youtube"></i> Watch on YouTube
             </a>
             <a href="https://github.com/aguirretim/ThunderTasteSpring" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">
-              <i class="fab fa-github"></i> Source Code
+              <i aria-hidden="true" class="fab fa-github"></i> Source Code
             </a>
           </div>
           <a href="https://www.youtube.com/channel/UCtmUcFYXC-h4fDNY_ZIpgaA" class="youtube-feature__channel-link" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-youtube"></i> Visit my YouTube channel
+            <i aria-hidden="true" class="fab fa-youtube"></i> Visit my YouTube channel
           </a>
         </div>
       </div>
@@ -473,12 +476,12 @@
         <a class="video-card" href="https://www.youtube.com/watch?v=4KM9QV8NoAU" target="_blank" rel="noopener noreferrer">
           <img
             src="https://img.youtube.com/vi/4KM9QV8NoAU/maxresdefault.jpg"
-            alt="What Pika Likes in Japanese"
+            alt=""
             class="video-card__thumb"
             loading="lazy"
           >
           <div class="video-card__overlay">
-            <div class="video-card__play"><i class="fab fa-youtube"></i></div>
+            <div class="video-card__play"><i aria-hidden="true" class="fab fa-youtube"></i></div>
             <p class="video-card__title">What Pika Likes in Japanese</p>
             <p class="video-card__label">Language Learning &middot; Japanese</p>
           </div>
@@ -486,12 +489,12 @@
         <a class="video-card" href="https://www.youtube.com/watch?v=AJPsuY5ropI" target="_blank" rel="noopener noreferrer">
           <img
             src="https://img.youtube.com/vi/AJPsuY5ropI/maxresdefault.jpg"
-            alt="DRONE CHILLEN IN THE PARK"
+            alt=""
             class="video-card__thumb"
             loading="lazy"
           >
           <div class="video-card__overlay">
-            <div class="video-card__play"><i class="fab fa-youtube"></i></div>
+            <div class="video-card__play"><i aria-hidden="true" class="fab fa-youtube"></i></div>
             <p class="video-card__title">Drone Chillen in the Park</p>
             <p class="video-card__label">Content Creation &middot; Outdoors</p>
           </div>
@@ -499,12 +502,12 @@
         <a class="video-card" href="https://www.youtube.com/watch?v=bs9wlQf1SeE" target="_blank" rel="noopener noreferrer">
           <img
             src="https://img.youtube.com/vi/bs9wlQf1SeE/maxresdefault.jpg"
-            alt="Exploring CES 2024 Inside the World of Future Tech!"
+            alt=""
             class="video-card__thumb"
             loading="lazy"
           >
           <div class="video-card__overlay">
-            <div class="video-card__play"><i class="fab fa-youtube"></i></div>
+            <div class="video-card__play"><i aria-hidden="true" class="fab fa-youtube"></i></div>
             <p class="video-card__title">Exploring CES 2024</p>
             <p class="video-card__label">Tech Coverage &middot; Las Vegas</p>
           </div>
@@ -512,12 +515,12 @@
         <a class="video-card" href="https://www.youtube.com/watch?v=zTDt_vTitDY" target="_blank" rel="noopener noreferrer">
           <img
             src="https://img.youtube.com/vi/zTDt_vTitDY/maxresdefault.jpg"
-            alt="Whip It Good. Pistol Whip on Oculus Quest and Valve Index"
+            alt=""
             class="video-card__thumb"
             loading="lazy"
           >
           <div class="video-card__overlay">
-            <div class="video-card__play"><i class="fab fa-youtube"></i></div>
+            <div class="video-card__play"><i aria-hidden="true" class="fab fa-youtube"></i></div>
             <p class="video-card__title">Pistol Whip — Oculus Quest &amp; Valve Index</p>
             <p class="video-card__label">Gaming &middot; VR</p>
           </div>
@@ -533,7 +536,7 @@
       <p class="section__subtitle animate-in">Verified credentials from industry leaders</p>
       <div class="certs-grid">
         <div class="cert-card animate-in">
-          <div class="cert-card__icon"><i class="fa-solid fa-code"></i></div>
+          <div class="cert-card__icon"><i aria-hidden="true" class="fa-solid fa-code"></i></div>
           <div class="cert-card__body">
             <span class="cert-card__issuer">Per Scholas</span>
             <h3 class="cert-card__name">Java Full Stack Developer</h3>
@@ -542,7 +545,7 @@
           <span class="cert-card__badge">Featured</span>
         </div>
         <div class="cert-card animate-in">
-          <div class="cert-card__icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="cert-card__icon"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i></div>
           <div class="cert-card__body">
             <span class="cert-card__issuer">CompTIA</span>
             <h3 class="cert-card__name">CompTIA A+</h3>
@@ -550,7 +553,7 @@
           </div>
         </div>
         <div class="cert-card animate-in">
-          <div class="cert-card__icon"><i class="fa-solid fa-diagram-project"></i></div>
+          <div class="cert-card__icon"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i></div>
           <div class="cert-card__body">
             <span class="cert-card__issuer">CompTIA</span>
             <h3 class="cert-card__name">CompTIA Project+</h3>
@@ -558,7 +561,7 @@
           </div>
         </div>
         <div class="cert-card animate-in">
-          <div class="cert-card__icon"><i class="fab fa-java"></i></div>
+          <div class="cert-card__icon"><i aria-hidden="true" class="fab fa-java"></i></div>
           <div class="cert-card__body">
             <span class="cert-card__issuer">HackerRank</span>
             <h3 class="cert-card__name">Java (Basic)</h3>
@@ -566,7 +569,7 @@
           </div>
         </div>
         <div class="cert-card animate-in">
-          <div class="cert-card__icon"><i class="fa-solid fa-globe"></i></div>
+          <div class="cert-card__icon"><i aria-hidden="true" class="fa-solid fa-globe"></i></div>
           <div class="cert-card__body">
             <span class="cert-card__issuer">CIW</span>
             <h3 class="cert-card__name">Web Development Specialist</h3>
@@ -592,6 +595,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="footer__inner">
@@ -600,11 +605,11 @@
         <span class="footer__tagline">Android Developer &amp; Full Stack Engineer</span>
       </div>
       <div class="footer__social">
-        <a href="https://www.linkedin.com/in/timothyaguirre/" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/aguirretim/" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://x.com/kid1afro2" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
-        <a href="https://www.youtube.com/channel/UCtmUcFYXC-h4fDNY_ZIpgaA" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="mailto:aguirretim@ymail.com" class="footer__link" aria-label="Email"><i class="far fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/timothyaguirre/" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i aria-hidden="true" class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/aguirretim/" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i aria-hidden="true" class="fab fa-github"></i></a>
+        <a href="https://x.com/kid1afro2" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="Twitter/X"><i aria-hidden="true" class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://www.youtube.com/channel/UCtmUcFYXC-h4fDNY_ZIpgaA" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i aria-hidden="true" class="fab fa-youtube"></i></a>
+        <a href="mailto:aguirretim@ymail.com" class="footer__link" aria-label="Email"><i aria-hidden="true" class="far fa-envelope"></i></a>
       </div>
       <p class="footer__copy">&copy; 2024 Tim R Aguirre. Built in Seattle.</p>
     </div>
@@ -619,6 +624,6 @@
     </div>
   </div>
 
-  <script src="JS/script.js?v=20261012"></script>
+  <script src="JS/script.js?v=20261105"></script>
 </body>
 </html>

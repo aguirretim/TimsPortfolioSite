@@ -31,6 +31,7 @@
   <link rel="stylesheet" href="CSS/enhancements.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
 
   <!-- Navigation -->
   <nav class="nav" id="mainNav">
@@ -38,19 +39,21 @@
       <a href="/" class="nav__logo">
         <span class="nav__logo-text">Tim<span class="nav__logo-accent">.</span></span>
       </a>
-      <ul class="nav__links">
+      <ul class="nav__links" id="navLinks">
         <li><a href="/" class="nav__link">Work</a></li>
         <li><a href="about.html" class="nav__link">About</a></li>
         <li><a href="contact.html" class="nav__link nav__link--active">Contact</a></li>
-        <li><a href="https://github.com/aguirretim/" class="nav__link nav__link--icon" target="_blank" rel="noopener" aria-label="GitHub Profile"><i class="fab fa-github"></i></a></li>
+        <li><a href="https://github.com/aguirretim/" class="nav__link nav__link--icon" target="_blank" rel="noopener" aria-label="GitHub Profile"><i aria-hidden="true" class="fab fa-github"></i></a></li>
       </ul>
-      <button class="nav__hamburger" id="navHamburger" aria-label="Toggle menu">
+      <button type="button" class="nav__hamburger" id="navHamburger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
   <!-- Contact Hero -->
+  <main id="main" tabindex="-1">
+
   <section class="contact-hero section">
     <div class="section__container">
       <p class="contact-hero__greeting">&lt; Say Hello /&gt;</p>
@@ -64,19 +67,19 @@
     <div class="section__container">
       <div class="contact-methods__grid">
         <a href="mailto:aguirretim@ymail.com" class="contact-card animate-in">
-          <div class="contact-card__icon"><i class="far fa-envelope"></i></div>
+          <div class="contact-card__icon"><i aria-hidden="true" class="far fa-envelope"></i></div>
           <h2 class="contact-card__title">Email Me</h2>
           <p class="contact-card__detail">aguirretim@ymail.com</p>
           <span class="contact-card__tag">Best for: Job inquiries &amp; opportunities</span>
         </a>
         <a href="https://www.linkedin.com/in/timothyaguirre/" class="contact-card animate-in" target="_blank" rel="noopener noreferrer">
-          <div class="contact-card__icon"><i class="fab fa-linkedin"></i></div>
+          <div class="contact-card__icon"><i aria-hidden="true" class="fab fa-linkedin"></i></div>
           <h2 class="contact-card__title">LinkedIn</h2>
           <p class="contact-card__detail">Timothy Aguirre &middot; 453 Connections</p>
           <span class="contact-card__tag">Best for: Professional networking</span>
         </a>
         <a href="https://x.com/kid1afro2" class="contact-card animate-in" target="_blank" rel="noopener noreferrer">
-          <div class="contact-card__icon"><i class="fa-brands fa-x-twitter"></i></div>
+          <div class="contact-card__icon"><i aria-hidden="true" class="fa-brands fa-x-twitter"></i></div>
           <h2 class="contact-card__title">Twitter / X</h2>
           <p class="contact-card__detail">@Kid1afro2</p>
           <span class="contact-card__tag">Best for: Quick chat &amp; tech talk</span>
@@ -91,22 +94,22 @@
       <h2 class="section__title animate-in">Find Me Elsewhere</h2>
       <div class="social-strip__links animate-in">
         <a href="https://github.com/aguirretim/" class="social-strip__card" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-github"></i>
+          <i aria-hidden="true" class="fab fa-github"></i>
           <span class="social-strip__label">GitHub</span>
           <span class="social-strip__handle">View my work</span>
         </a>
         <a href="https://www.youtube.com/channel/UCtmUcFYXC-h4fDNY_ZIpgaA" class="social-strip__card" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-youtube"></i>
+          <i aria-hidden="true" class="fab fa-youtube"></i>
           <span class="social-strip__label">YouTube</span>
           <span class="social-strip__handle">Watch my content</span>
         </a>
         <a href="https://www.linkedin.com/in/timothyaguirre/" class="social-strip__card" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-linkedin"></i>
+          <i aria-hidden="true" class="fab fa-linkedin"></i>
           <span class="social-strip__label">LinkedIn</span>
           <span class="social-strip__handle">Connect with me</span>
         </a>
         <a href="https://x.com/kid1afro2" class="social-strip__card" target="_blank" rel="noopener noreferrer">
-          <i class="fa-brands fa-x-twitter"></i>
+          <i aria-hidden="true" class="fa-brands fa-x-twitter"></i>
           <span class="social-strip__label">Twitter / X</span>
           <span class="social-strip__handle">Follow me</span>
         </a>
@@ -124,16 +127,18 @@
         </div>
         <h2 class="availability__title">Currently Open To</h2>
         <div class="availability__items">
-          <span class="availability__item"><i class="fa-solid fa-check"></i> Full-time Roles</span>
-          <span class="availability__item"><i class="fa-solid fa-check"></i> Contract / Freelance</span>
-          <span class="availability__item"><i class="fa-solid fa-check"></i> Android &amp; Mobile Projects</span>
-          <span class="availability__item"><i class="fa-solid fa-check"></i> Full Stack (Spring Boot, React)</span>
-          <span class="availability__item"><i class="fa-solid fa-check"></i> Creative Collaborations</span>
-          <span class="availability__item"><i class="fa-solid fa-check"></i> Open Source Contributions</span>
+          <span class="availability__item"><i aria-hidden="true" class="fa-solid fa-check"></i> Full-time Roles</span>
+          <span class="availability__item"><i aria-hidden="true" class="fa-solid fa-check"></i> Contract / Freelance</span>
+          <span class="availability__item"><i aria-hidden="true" class="fa-solid fa-check"></i> Android &amp; Mobile Projects</span>
+          <span class="availability__item"><i aria-hidden="true" class="fa-solid fa-check"></i> Full Stack (Spring Boot, React)</span>
+          <span class="availability__item"><i aria-hidden="true" class="fa-solid fa-check"></i> Creative Collaborations</span>
+          <span class="availability__item"><i aria-hidden="true" class="fa-solid fa-check"></i> Open Source Contributions</span>
         </div>
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- Footer -->
   <footer class="footer">
@@ -143,16 +148,16 @@
         <span class="footer__tagline">Android Developer &amp; Full Stack Engineer</span>
       </div>
       <div class="footer__social">
-        <a href="https://www.linkedin.com/in/timothyaguirre/" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/aguirretim/" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://x.com/kid1afro2" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
-        <a href="https://www.youtube.com/channel/UCtmUcFYXC-h4fDNY_ZIpgaA" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="mailto:aguirretim@ymail.com" class="footer__link" aria-label="Email"><i class="far fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/timothyaguirre/" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i aria-hidden="true" class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/aguirretim/" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i aria-hidden="true" class="fab fa-github"></i></a>
+        <a href="https://x.com/kid1afro2" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="Twitter/X"><i aria-hidden="true" class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://www.youtube.com/channel/UCtmUcFYXC-h4fDNY_ZIpgaA" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i aria-hidden="true" class="fab fa-youtube"></i></a>
+        <a href="mailto:aguirretim@ymail.com" class="footer__link" aria-label="Email"><i aria-hidden="true" class="far fa-envelope"></i></a>
       </div>
       <p class="footer__copy">&copy; 2024 Tim R Aguirre. Built in Seattle.</p>
     </div>
   </footer>
 
-  <script src="JS/script.js?v=20261012"></script>
+  <script src="JS/script.js?v=20261105"></script>
 </body>
 </html>

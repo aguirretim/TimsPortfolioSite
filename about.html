@@ -31,6 +31,7 @@
   <link rel="stylesheet" href="CSS/enhancements.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
 
   <!-- Navigation -->
   <nav class="nav" id="mainNav">
@@ -38,17 +39,19 @@
       <a href="/" class="nav__logo">
         <span class="nav__logo-text">Tim<span class="nav__logo-accent">.</span></span>
       </a>
-      <ul class="nav__links">
+      <ul class="nav__links" id="navLinks">
         <li><a href="/" class="nav__link">Work</a></li>
         <li><a href="about.html" class="nav__link nav__link--active">About</a></li>
         <li><a href="contact.html" class="nav__link">Contact</a></li>
-        <li><a href="https://github.com/aguirretim/" class="nav__link nav__link--icon" target="_blank" rel="noopener" aria-label="GitHub Profile"><i class="fab fa-github"></i></a></li>
+        <li><a href="https://github.com/aguirretim/" class="nav__link nav__link--icon" target="_blank" rel="noopener" aria-label="GitHub Profile"><i aria-hidden="true" class="fab fa-github"></i></a></li>
       </ul>
-      <button class="nav__hamburger" id="navHamburger" aria-label="Toggle menu">
+      <button type="button" class="nav__hamburger" id="navHamburger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
+
+  <main id="main" tabindex="-1">
 
   <!-- About Hero -->
   <section class="about-hero">
@@ -84,7 +87,7 @@
       <h2 class="section__title animate-in">Skills &amp; Experience</h2>
       <div class="skills-columns">
         <div class="skills-column animate-in">
-          <h3 class="experience__heading"><i class="fa-solid fa-code"></i> Technical Skills</h3>
+          <h3 class="experience__heading"><i aria-hidden="true" class="fa-solid fa-code"></i> Technical Skills</h3>
           <div class="skill-badges">
             <h4 class="skill-badges__group-title">Mobile</h4>
             <div class="skill-badges__group">
@@ -150,7 +153,7 @@
           </div>
         </div>
         <div class="skills-column animate-in">
-          <h3 class="experience__heading"><i class="fa-solid fa-palette"></i> Creative &amp; Soft Skills</h3>
+          <h3 class="experience__heading"><i aria-hidden="true" class="fa-solid fa-palette"></i> Creative &amp; Soft Skills</h3>
           <div class="skill-badges">
             <div class="skill-badges__group">
               <span class="badge">Video Production</span>
@@ -174,42 +177,42 @@
       <p class="section__subtitle animate-in">Beyond the code — the full creator stack</p>
       <div class="tools-grid animate-in">
         <div class="tool-card">
-          <div class="tool-card__icon"><i class="fa-solid fa-tower-broadcast"></i></div>
+          <div class="tool-card__icon"><i aria-hidden="true" class="fa-solid fa-tower-broadcast"></i></div>
           <h3 class="tool-card__name">Restream</h3>
           <p class="tool-card__desc">Multiplatform simulcasting across Twitch, YouTube, and 30+ platforms at once.</p>
         </div>
         <div class="tool-card">
-          <div class="tool-card__icon"><i class="fa-solid fa-circle-dot"></i></div>
+          <div class="tool-card__icon"><i aria-hidden="true" class="fa-solid fa-circle-dot"></i></div>
           <h3 class="tool-card__name">OBS Studio</h3>
           <p class="tool-card__desc">Full broadcast production — scenes, overlays, audio mixing, and custom layouts.</p>
         </div>
         <div class="tool-card">
-          <div class="tool-card__icon"><i class="fab fa-twitch"></i></div>
+          <div class="tool-card__icon"><i aria-hidden="true" class="fab fa-twitch"></i></div>
           <h3 class="tool-card__name">Twitch</h3>
           <p class="tool-card__desc">Live streaming gaming, dev sessions, and IRL content to a live audience.</p>
         </div>
         <div class="tool-card">
-          <div class="tool-card__icon"><i class="fab fa-youtube"></i></div>
+          <div class="tool-card__icon"><i aria-hidden="true" class="fab fa-youtube"></i></div>
           <h3 class="tool-card__name">YouTube Studio</h3>
           <p class="tool-card__desc">Producing, editing, and publishing videos — from dev demos to convention vlogs.</p>
         </div>
         <div class="tool-card">
-          <div class="tool-card__icon"><i class="fa-solid fa-film"></i></div>
+          <div class="tool-card__icon"><i aria-hidden="true" class="fa-solid fa-film"></i></div>
           <h3 class="tool-card__name">DaVinci Resolve</h3>
           <p class="tool-card__desc">Professional video editing for IRL vlogs, event coverage, and project demos.</p>
         </div>
         <div class="tool-card">
-          <div class="tool-card__icon"><i class="fa-solid fa-helicopter"></i></div>
+          <div class="tool-card__icon"><i aria-hidden="true" class="fa-solid fa-helicopter"></i></div>
           <h3 class="tool-card__name">DJI Drone</h3>
           <p class="tool-card__desc">Aerial and ground-level content around Seattle. One of many tools in the creative kit.</p>
         </div>
         <div class="tool-card">
-          <div class="tool-card__icon"><i class="fab fa-discord"></i></div>
+          <div class="tool-card__icon"><i aria-hidden="true" class="fab fa-discord"></i></div>
           <h3 class="tool-card__name">Discord</h3>
           <p class="tool-card__desc">Community hub — gaming groups, dev communities, and streaming audience engagement.</p>
         </div>
         <div class="tool-card">
-          <div class="tool-card__icon"><i class="fab fa-steam"></i></div>
+          <div class="tool-card__icon"><i aria-hidden="true" class="fab fa-steam"></i></div>
           <h3 class="tool-card__name">Steam</h3>
           <p class="tool-card__desc">Primary gaming platform. If there's a good RPG, FPS, or anything competitive — I'm on it.</p>
         </div>
@@ -224,59 +227,59 @@
       <p class="section__subtitle animate-in">Verified credentials from industry leaders</p>
       <div class="certs-grid">
         <div class="cert-card animate-in">
-          <div class="cert-card__icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div class="cert-card__icon"><i aria-hidden="true" class="fa-solid fa-graduation-cap"></i></div>
           <div class="cert-card__body">
             <span class="cert-card__issuer">WGU Washington</span>
-            <h4 class="cert-card__name">B.S. Software Development</h4>
+            <h3 class="cert-card__name">B.S. Software Development</h3>
             <span class="cert-card__year">2020</span>
           </div>
           <span class="cert-card__badge">Degree</span>
         </div>
         <div class="cert-card animate-in">
-          <div class="cert-card__icon"><i class="fa-solid fa-code"></i></div>
+          <div class="cert-card__icon"><i aria-hidden="true" class="fa-solid fa-code"></i></div>
           <div class="cert-card__body">
             <span class="cert-card__issuer">Per Scholas</span>
-            <h4 class="cert-card__name">Java Full Stack Developer</h4>
+            <h3 class="cert-card__name">Java Full Stack Developer</h3>
             <span class="cert-card__year">2023</span>
           </div>
         </div>
         <div class="cert-card animate-in">
-          <div class="cert-card__icon"><i class="fa-solid fa-music"></i></div>
+          <div class="cert-card__icon"><i aria-hidden="true" class="fa-solid fa-music"></i></div>
           <div class="cert-card__body">
             <span class="cert-card__issuer">Art Institute of Seattle</span>
-            <h4 class="cert-card__name">A.A.A. Audio Production</h4>
+            <h3 class="cert-card__name">A.A.A. Audio Production</h3>
             <span class="cert-card__year">2011</span>
           </div>
         </div>
         <div class="cert-card animate-in">
-          <div class="cert-card__icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="cert-card__icon"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i></div>
           <div class="cert-card__body">
             <span class="cert-card__issuer">CompTIA</span>
-            <h4 class="cert-card__name">CompTIA A+</h4>
+            <h3 class="cert-card__name">CompTIA A+</h3>
             <span class="cert-card__year">Industry Standard</span>
           </div>
         </div>
         <div class="cert-card animate-in">
-          <div class="cert-card__icon"><i class="fa-solid fa-diagram-project"></i></div>
+          <div class="cert-card__icon"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i></div>
           <div class="cert-card__body">
             <span class="cert-card__issuer">CompTIA</span>
-            <h4 class="cert-card__name">CompTIA Project+</h4>
+            <h3 class="cert-card__name">CompTIA Project+</h3>
             <span class="cert-card__year">Project Management</span>
           </div>
         </div>
         <div class="cert-card animate-in">
-          <div class="cert-card__icon"><i class="fab fa-java"></i></div>
+          <div class="cert-card__icon"><i aria-hidden="true" class="fab fa-java"></i></div>
           <div class="cert-card__body">
             <span class="cert-card__issuer">HackerRank</span>
-            <h4 class="cert-card__name">Java (Basic)</h4>
+            <h3 class="cert-card__name">Java (Basic)</h3>
             <span class="cert-card__year">Verified</span>
           </div>
         </div>
         <div class="cert-card animate-in">
-          <div class="cert-card__icon"><i class="fa-solid fa-globe"></i></div>
+          <div class="cert-card__icon"><i aria-hidden="true" class="fa-solid fa-globe"></i></div>
           <div class="cert-card__body">
             <span class="cert-card__issuer">CIW</span>
-            <h4 class="cert-card__name">Web Development Specialist</h4>
+            <h3 class="cert-card__name">Web Development Specialist</h3>
             <span class="cert-card__year">Multiple Certs</span>
           </div>
         </div>
@@ -290,22 +293,22 @@
       <h2 class="section__title animate-in">Outside the Code</h2>
       <div class="interests__grid">
         <div class="interest-card animate-in">
-          <div class="interest-card__icon"><i class="fa-solid fa-gamepad"></i></div>
+          <div class="interest-card__icon"><i aria-hidden="true" class="fa-solid fa-gamepad"></i></div>
           <h3 class="interest-card__title">Gaming &amp; Streaming</h3>
           <p class="interest-card__desc">Twitch streamer and serious gamer. If there's a good RPG or a competitive FPS, I'm on it.</p>
         </div>
         <div class="interest-card animate-in">
-          <div class="interest-card__icon"><i class="fa-solid fa-video"></i></div>
+          <div class="interest-card__icon"><i aria-hidden="true" class="fa-solid fa-video"></i></div>
           <h3 class="interest-card__title">Content Creation</h3>
           <p class="interest-card__desc">YouTube videos, Twitch streams, event coverage, and the occasional aerial shot over Seattle. If it's worth capturing, I'm capturing it.</p>
         </div>
         <div class="interest-card animate-in">
-          <div class="interest-card__icon"><i class="fa-solid fa-film"></i></div>
+          <div class="interest-card__icon"><i aria-hidden="true" class="fa-solid fa-film"></i></div>
           <h3 class="interest-card__title">Movies &amp; TV</h3>
           <p class="interest-card__desc">Serious TV show connoisseur. Give me a good series and I'm locked in for the whole season in one sitting.</p>
         </div>
         <div class="interest-card animate-in">
-          <div class="interest-card__icon"><i class="fa-solid fa-language"></i></div>
+          <div class="interest-card__icon"><i aria-hidden="true" class="fa-solid fa-language"></i></div>
           <h3 class="interest-card__title">Language &amp; Culture</h3>
           <p class="interest-card__desc">Currently learning Japanese. Always picking up something new &mdash; in code and in life.</p>
         </div>
@@ -395,7 +398,7 @@
       </div>
       <div class="testimonials-footer animate-in">
         <a href="https://www.linkedin.com/in/timothyaguirre/" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-linkedin"></i> View All on LinkedIn
+          <i aria-hidden="true" class="fab fa-linkedin"></i> View All on LinkedIn
         </a>
       </div>
     </div>
@@ -408,10 +411,12 @@
       <p class="about-cta__text animate-in">I'm always open to new opportunities, collaborations, and interesting conversations.</p>
       <div class="about-cta__actions animate-in">
         <a href="contact.html" class="btn btn--primary">Get In Touch</a>
-        <a href="https://www.linkedin.com/in/timothyaguirre/" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <i class="fab fa-linkedin"></i></a>
+        <a href="https://www.linkedin.com/in/timothyaguirre/" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <i aria-hidden="true" class="fab fa-linkedin"></i></a>
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- Footer -->
   <footer class="footer">
@@ -421,16 +426,16 @@
         <span class="footer__tagline">Android Developer &amp; Full Stack Engineer</span>
       </div>
       <div class="footer__social">
-        <a href="https://www.linkedin.com/in/timothyaguirre/" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/aguirretim/" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://x.com/kid1afro2" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
-        <a href="https://www.youtube.com/channel/UCtmUcFYXC-h4fDNY_ZIpgaA" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="mailto:aguirretim@ymail.com" class="footer__link" aria-label="Email"><i class="far fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/timothyaguirre/" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i aria-hidden="true" class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/aguirretim/" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i aria-hidden="true" class="fab fa-github"></i></a>
+        <a href="https://x.com/kid1afro2" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="Twitter/X"><i aria-hidden="true" class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://www.youtube.com/channel/UCtmUcFYXC-h4fDNY_ZIpgaA" class="footer__link" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i aria-hidden="true" class="fab fa-youtube"></i></a>
+        <a href="mailto:aguirretim@ymail.com" class="footer__link" aria-label="Email"><i aria-hidden="true" class="far fa-envelope"></i></a>
       </div>
       <p class="footer__copy">&copy; 2024 Tim R Aguirre. Built in Seattle.</p>
     </div>
   </footer>
 
-  <script src="JS/script.js?v=20261012"></script>
+  <script src="JS/script.js?v=20261105"></script>
 </body>
 </html>

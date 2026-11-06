@@ -203,16 +203,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelector('.nav__links');
 
   if (hamburger && navLinks) {
+    // WCAG 4.1.2 — expose the menu's open/closed state to assistive tech
+    const setMenu = (open) => {
+      hamburger.classList.toggle('active', open);
+      navLinks.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', String(open));
+    };
+
     hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navLinks.classList.toggle('open');
+      setMenu(!navLinks.classList.contains('open'));
     });
 
     navLinks.querySelectorAll('.nav__link').forEach((link) => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('open');
-      });
+      link.addEventListener('click', () => setMenu(false));
+    });
+
+    // Escape closes the open menu and returns focus to the toggle
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+        setMenu(false);
+        hamburger.focus();
+      }
     });
   }
 
@@ -229,12 +240,19 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!target) return;
 
       e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+
+      // WCAG 2.4.1 / 2.4.3 — move keyboard focus with the scroll, so the skip
+      // link and in-page links ("View My Work") don't leave focus behind
+      if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+      target.focus({ preventScroll: true });
 
       // Close mobile menu if open
       if (hamburger && navLinks) {
         hamburger.classList.remove('active');
         navLinks.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
       }
     });
   });
@@ -400,8 +418,9 @@ function setupCarousel(carousel) {
     if (manual) restart();
   };
   const next = () => goTo(index + 1, false);
+  let userPaused = false;
   const start = () => {
-    if (!reduceMotion && timer === null) timer = window.setInterval(next, DWELL);
+    if (!reduceMotion && !userPaused && timer === null) timer = window.setInterval(next, DWELL);
   };
   const stop = () => {
     if (timer !== null) { window.clearInterval(timer); timer = null; }
@@ -410,6 +429,27 @@ function setupCarousel(carousel) {
 
   // Expose stop so a closing modal can clear its slideshow's interval
   carousel._stopAuto = stop;
+
+  // WCAG 2.2.2 — an explicit pause/play control (hover/focus pausing alone
+  // does not help touch or screen-reader users). Not shown when reduced
+  // motion is on, because the slideshow never auto-advances then.
+  if (!reduceMotion) {
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'carousel__toggle';
+    const paint = () => {
+      toggle.setAttribute('aria-label', userPaused ? 'Play slideshow' : 'Pause slideshow');
+      toggle.innerHTML = `<i aria-hidden="true" class="fa-solid ${userPaused ? 'fa-play' : 'fa-pause'}"></i>`;
+    };
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation(); // never trigger the parent card's modal
+      userPaused = !userPaused;
+      if (userPaused) stop(); else start();
+      paint();
+    });
+    paint();
+    dotsWrap.appendChild(toggle);
+  }
 
   // WCAG 2.2.2 — pausable: stop auto-advance on hover and keyboard focus
   carousel.addEventListener('mouseenter', stop);
@@ -671,15 +711,15 @@ function buildModalHTML(data) {
 
   const linksHTML = data.links && (data.links.github || data.links.demo)
     ? `<div class="modal__links">
-        ${data.links.demo ? `<a class="btn btn--primary" href="${data.links.demo}" target="_blank" rel="noopener noreferrer">${data.links.demoLabel || 'Live Demo'} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>` : ''}
-        ${data.links.github ? `<a class="btn btn--ghost" href="${data.links.github}" target="_blank" rel="noopener noreferrer">View on GitHub <i class="fab fa-github"></i></a>` : ''}
+        ${data.links.demo ? `<a class="btn btn--primary" href="${data.links.demo}" target="_blank" rel="noopener noreferrer">${data.links.demoLabel || 'Live Demo'} <i aria-hidden="true" class="fa-solid fa-arrow-up-right-from-square"></i></a>` : ''}
+        ${data.links.github ? `<a class="btn btn--ghost" href="${data.links.github}" target="_blank" rel="noopener noreferrer">View on GitHub <i aria-hidden="true" class="fab fa-github"></i></a>` : ''}
       </div>`
     : '';
 
   const infoHTML = `
     <div class="modal__info">
       <div class="modal__header">
-        <div class="modal__icon"><i class="${data.icon}"></i></div>
+        <div class="modal__icon"><i aria-hidden="true" class="${data.icon}"></i></div>
         <div>
           <div class="modal__tag">${data.tag}</div>
           <h2 class="modal__title" id="modalTitle">${data.title}</h2>
@@ -704,6 +744,16 @@ function buildModalHTML(data) {
 // Element focused before the modal opened, so focus can be restored on close.
 let modalLastFocused = null;
 
+// Make every top-level page region except the dialog inert while it is open
+// (backs up aria-modal for screen readers that ignore it).
+function setPageInert(modal, on) {
+  Array.from(document.body.children).forEach((el) => {
+    if (el === modal || el.tagName === 'SCRIPT') return;
+    if (on) el.setAttribute('inert', '');
+    else el.removeAttribute('inert');
+  });
+}
+
 function openModal(key) {
   const data = PROJECT_MODAL_DATA[key];
   if (!data) return;
@@ -715,6 +765,9 @@ function openModal(key) {
 
   // Start the modal's own image slideshow
   initCarousels(modal);
+
+  // Hide the page behind the dialog from keyboard and screen readers
+  setPageInert(modal, true);
 
   // WCAG 2.4.3 / 4.1.2 — move focus into the dialog
   modalLastFocused = document.activeElement;
@@ -731,6 +784,7 @@ function closeModal() {
   });
   modal.classList.remove('is-open');
   document.body.style.overflow = '';
+  setPageInert(modal, false);
 
   // Restore focus to the control that opened the modal
   if (modalLastFocused && typeof modalLastFocused.focus === 'function') {
@@ -745,7 +799,7 @@ function initProjectModals() {
     // A whole card (or its "View Details" button) opens the modal, but never
     // hijack clicks on real links or the carousel dots inside the card.
     const opener = e.target.closest('[data-open-modal]');
-    if (opener && !e.target.closest('a, .carousel__dot')) {
+    if (opener && !e.target.closest('a, .carousel__dot, .carousel__toggle')) {
       e.stopPropagation();
       openModal(opener.dataset.openModal);
       return;
